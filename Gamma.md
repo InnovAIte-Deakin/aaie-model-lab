@@ -37,3 +37,4 @@ Gemma 2 models are optimized for efficient inference and fine-tuning on modern h
 - Unlike Qwen 3, Gemma lacks native agent frameworks (e.g., for chaining tools, calling APIs, or multi-step workflows)  
 - Cannot use Gemma to train new foundation models or competing large models (per the Gemma License)  
 - The 2B model might underperform on nuanced detection tasks (e.g., style mimicry, deception), requiring extra training or prompt tuning  
+
