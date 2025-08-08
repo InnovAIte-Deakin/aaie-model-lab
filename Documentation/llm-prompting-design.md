@@ -49,7 +49,7 @@
 - **Tasks:**  
   - Run baseline prompts across all LLMs.  
   - Log outputs with metadata (model, latency, token count) 
-  - Example: Refer notebook
+  - Example: Refer AAIE_Prompting_Design_Qwen.ipynb
 
 ### **Phase 3: Evaluation & Gaps**  
 - **Metrics:**  
