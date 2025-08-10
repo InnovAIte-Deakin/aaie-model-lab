@@ -1,0 +1,2 @@
+n_samples,accuracy,precision,recall,f1,avg_latency_sec
+6,0.8333333333333334,0.75,1.0,0.8571428571428571,4.442820946375529
