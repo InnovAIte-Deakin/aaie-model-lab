@@ -67,7 +67,6 @@ Additional info: https://qwen.readthedocs.io/en/v2.5/getting_started/concepts.ht
 | Links | https://qwen.readthedocs.io/en/v2.5/benchmark/speed_benchmark.html | https://qwen.readthedocs.io/en/latest/getting_started/speed_benchmark.html |
 
  
-
 ## Advantages: 
 * Can scale up to Qwen model that support up to 1M token context lengths, or other Qwen models with up to 72B parameters 
 * Good documentation available from developer 
@@ -79,4 +78,18 @@ Additional info: https://qwen.readthedocs.io/en/v2.5/getting_started/concepts.ht
 * Context windows may not be sufficient size for AAIE task 
 * Qwen 3 0.6B may still be too resource/compute heavy for fine tuning task (dependent on GPU availabilities) 
 
- 
+## Risks
+As with many open-weight models, Qwen models can be deployed as self-hosted solutions to minimise risk and provide greater control over security, data governance, and guardrails. However, there are several additional risks to consider:
+
+- **Data Privacy**: Fine-tuning or deploying models on sensitive data may expose information if not properly secured. Ensuring robust access controls and encryption is essential.
+- **Compliance**: Depending on the deployment region and use case, regulatory compliance must be addressed, especially when handling personal or confidential data.
+- **Model Bias and Safety**: Open-weight models may inherit biases from their training data, potentially leading to unintended outputs. Continuous monitoring and prompt engineering are required to mitigate these risks.
+- **Maintenance and Updates**: Self-hosted models require ongoing maintenance, including updates for security patches and improvements, which can add operational overhead.
+- **Resource Requirements**: While smaller models are less demanding, scaling up to larger models may require significant compute resources, impacting cost and infrastructure planning.
+
+## Suitability for AAIE Project Requirements
+The Qwen 3 model is a strong candidate for fine-tuning within the AAIE project. With 0.6B parameters, it is resource-efficient and can be run on CPU for initial experimentation, making it accessible for teams with limited hardware. As project requirements evolve and GPU resources become available, the model can be scaled up to larger variants—up to 72B parameters—offering flexibility for future growth.
+
+Qwen 3 excels in tool calling, enabling advanced integrations such as Retrieval Augmented Generation (RAG), database connections, and API interactions. This capability supports complex workflows and enhances the model's utility for diverse AAIE use cases.
+
+Additionally, Qwen 3 features a Thinking Mode, which allows for improved reasoning and assessment capabilities. This is particularly valuable for evaluating submissions, as the model's thought process can be analyzed, iterated, and refined through targeted prompting techniques. Overall, Qwen 3 aligns well with AAIE project requirements, balancing performance, scalability, and integration potential.
