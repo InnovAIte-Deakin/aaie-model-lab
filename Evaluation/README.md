@@ -19,10 +19,8 @@ Evaluation/
 ├── README.md                           # This overview document
 ├── AI Detection/
 │   ├── Human_Evaluation_Rubric_AI_Detection.md
-│   └── AI_Detection_Evaluation_Rubric_Detailed.docx
 ├── Feedback Generation/
 │   ├── Human_Evaluation_Rubric_Feedback_Generation.md
-│   └── Feedback_Generation_Evaluation_Rubric_Detailed.docx
 └── dummy.csv                          # Placeholder file
 ```
 
@@ -35,12 +33,6 @@ This evaluation framework provides documentation in two complementary formats:
 - **Content**: Essential criteria, examples, and guidelines
 - **Use Case**: Regular evaluation work and quick lookups
 - **Format**: Lightweight, easy to read in any text editor
-
-### **Word Documents (.docx)**
-- **Purpose**: Comprehensive training and detailed reference
-- **Content**: Expanded explanations, detailed examples, training materials
-- **Use Case**: New evaluator training, complex cases, detailed analysis
-- **Format**: Rich text with formatting, suitable for printing and sharing
 
 ## Quick Start Guide
 
@@ -67,8 +59,8 @@ This evaluation framework provides documentation in two complementary formats:
 **Objective**: Evaluate whether the AI model correctly identifies AI-generated vs. human-written text
 
 **Evaluation Method**: Binary Classification
-- ✅ **Correct Prediction**: Model accurately identifies text origin
-- ❌ **Wrong Prediction**: Model incorrectly identifies text origin
+- **Correct Prediction**: Model accurately identifies text origin
+- **Wrong Prediction**: Model incorrectly identifies text origin
 
 **Key Criteria**:
 - Linguistic patterns analysis
@@ -80,8 +72,6 @@ This evaluation framework provides documentation in two complementary formats:
 
 **Detailed Documentation**: 
 - **Quick Reference**: `Human_Evaluation_Rubric_AI_Detection.md` (Markdown format)
-- **Comprehensive Guide**: `AI_Detection_Evaluation_Rubric_Detailed.docx` (Word format with expanded explanations)
-
 ### 2. Feedback Generation Task
 
 **Objective**: Evaluate the quality of AI-generated feedback for students
@@ -103,7 +93,6 @@ This evaluation framework provides documentation in two complementary formats:
 
 **Detailed Documentation**: 
 - **Quick Reference**: `Human_Evaluation_Rubric_Feedback_Generation.md` (Markdown format)
-- **Comprehensive Guide**: `Feedback_Generation_Evaluation_Rubric_Detailed.docx` (Word format with expanded explanations)
 
 ## Quality Assurance
 
@@ -187,11 +176,6 @@ Track the following across all evaluations:
 - Contact the project lead
 - Document the issue for future rubric updates
 
-### Quality Concerns
-- Participate in team calibration sessions
-- Request additional training if needed
-- Provide feedback on rubric clarity
-
 ## Future Updates
 
 This evaluation framework is designed to evolve based on:
@@ -199,14 +183,6 @@ This evaluation framework is designed to evolve based on:
 - Changes in AI capabilities
 - Educational requirements updates
 - Research findings and best practices
-
-**Note**: Always use the most current version of the rubrics and participate in feedback sessions to help improve the framework.
-
----
-
-## Contact Information
-
-For questions about this evaluation framework, please contact the project team or refer to the project documentation.
 
 **Last Updated**: 2025
 **Version**: 1.0

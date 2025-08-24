@@ -2,8 +2,6 @@
 
 ## Project: AAIE – Artificial Assessment Intelligence for Education
 **Task**: Human Evaluation Criteria for Feedback Generation
-**Version**: 1.0
-**Date**: 2025
 
 ## Overview
 This document provides comprehensive evaluation criteria for human raters to assess AI-generated feedback quality. The evaluation uses a 1-5 rating scale with specific criteria for what constitutes excellent, good, average, poor, and unacceptable feedback output.
@@ -245,5 +243,3 @@ This document provides comprehensive evaluation criteria for human raters to ass
 ## Conclusion
 
 This rubric provides a structured approach for human evaluators to consistently assess AI-generated feedback quality. By following these detailed criteria, team members can ensure reliable and comparable evaluations that contribute to meaningful model assessment and improvement.
-
-**Note**: This rubric should be reviewed and updated regularly based on feedback from evaluators and changes in educational requirements or AI capabilities.

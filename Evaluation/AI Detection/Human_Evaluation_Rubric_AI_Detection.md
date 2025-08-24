@@ -2,8 +2,6 @@
 
 ## Project: AAIE – Artificial Assessment Intelligence for Education
 **Task**: Human Evaluation Criteria for AI Detection
-**Version**: 1.0
-**Date**: 2025
 
 ## Overview
 This document provides comprehensive evaluation criteria for human raters to assess AI detection model performance. The evaluation uses a binary classification system (Correct Prediction vs. Wrong Prediction) to determine whether the model accurately identified AI-generated vs. human-written text.
@@ -44,7 +42,7 @@ This document provides comprehensive evaluation criteria for human raters to ass
 
 #### Linguistic Patterns to Consider
 
-**AI-Generated Text Indicators**:
+**AI - Generated Text Indicators**:
 - Unnatural repetition of phrases or sentence structures
 - Overly consistent sentence length and complexity
 - Lack of personal pronouns or first-person experiences
@@ -54,7 +52,7 @@ This document provides comprehensive evaluation criteria for human raters to ass
 - Repetitive use of transition words
 - Overly formal or academic tone in casual contexts
 
-**Human-Written Text Indicators**:
+**Human - Written Text Indicators**:
 - Natural flow and rhythm in writing
 - Personal anecdotes or experiences
 - Imperfect grammar or punctuation
@@ -72,7 +70,7 @@ This document provides comprehensive evaluation criteria for human raters to ass
 - Account for different writing abilities and styles
 - Consider cultural and linguistic diversity
 
-**Task-Specific Context**:
+**Task - Specific Context**:
 - Assess whether the response directly addresses the prompt
 - Consider the complexity and depth of the response
 - Evaluate appropriateness for the given task or question
@@ -195,4 +193,3 @@ Date: [Date]
 
 This rubric provides a structured approach for human evaluators to consistently assess AI detection model performance. By following these guidelines, team members can ensure reliable and comparable evaluations that contribute to meaningful model assessment and improvement.
 
-**Note**: This rubric should be reviewed and updated regularly as AI text generation capabilities evolve and new patterns emerge.
