@@ -59,7 +59,7 @@ def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     Returns:
         Dict[str, str]: Dictionary with rubric category scores
     """
-    # This is a mock implementation - replace with actual LLM API call
+    # This is a mock implementation (will replace with actual LLM API call)
     # For now, it returns a simple evaluation based on text length and content
     
     text_length = len(student_submission)
