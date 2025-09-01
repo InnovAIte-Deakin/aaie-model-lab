@@ -18,7 +18,7 @@ The model generates detailed, rubric-style feedback, including specific criteria
 
 ### Performance Data
 | Metric                 | Gemma Result       |
-| 			                 | 			              |
+|------------------------|--------------------|
 | Feedback Quality       | 4/5                |
 | AI Detection Accuracy  | 33%                |
 
