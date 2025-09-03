@@ -23,7 +23,14 @@ from typing import List, Dict, Any
 
 
 # Configure logging
-def setup_logging():
+def setup_logging() -> logging.Logger:
+    """
+    Initializes and configures the logging system with both console and file handlers.
+    
+    Returns:
+        logging.Logger: Configured logger instance with both console (INFO level) and 
+                       file (DEBUG level) handlers set up.
+    """
     # Clear any existing handlers to avoid duplicates
     logging.root.handlers = []
     
@@ -176,11 +183,16 @@ Student submission:
 # Functions for getting all JSON files from Training Data folder
 def get_training_data_files() -> tuple[List[str], List[str]]:
     """
-    Get all JSON files from the Training Data folder.
+    Retrieves all JSON files from the Training Data folder in the current directory.
     
     Returns:
-        List[str]: A list of paths to all JSON files in the Training Data directory.
-        List[str]: A list of filenames for all JSON files in the Training Data directory.
+        tuple[List[str], List[str]]: A tuple containing:
+            - paths (List[str]): Absolute paths to all JSON files in the Training Data directory
+            - filenames (List[str]): Names of all JSON files (without path)
+    
+    Notes:
+        Searches for JSON files in the "Training Data" subdirectory relative to the
+        current script's location. Logs the number of files found.
     """
     current_dir = Path(__file__).parent
     training_data_dir = current_dir / "Training Data"
@@ -190,7 +202,21 @@ def get_training_data_files() -> tuple[List[str], List[str]]:
     return paths, filenames
 
 
-def load_rubric_from_json(json_path):
+def load_rubric_from_json(json_path: str) -> Dict[str, Any]:
+    """
+    Loads and parses a rubric from a JSON file.
+    
+    Args:
+        json_path (str): Path to the JSON file containing the rubric data.
+    
+    Returns:
+        Dict[str, Any]: The parsed rubric data structure.
+        
+    Raises:
+        UnicodeDecodeError: If the file is not properly UTF-8 encoded.
+        json.JSONDecodeError: If the file contains invalid JSON.
+        Exception: For other unexpected errors during file operations.
+    """
     logger.debug(f"Loading rubric from {json_path}")
     try:
         with open(json_path, "r", encoding="utf-8") as f:
@@ -208,7 +234,18 @@ def load_rubric_from_json(json_path):
         raise
 
 
-def format_rubric(rubric):
+def format_rubric(rubric: Dict[str, Any]) -> str:
+    """
+    Formats a rubric dictionary into a human-readable string format.
+    
+    Args:
+        rubric (Dict[str, Any]): The rubric data structure containing 'rubric_id',
+            'criteria', and nested performance descriptors.
+    
+    Returns:
+        str: A formatted string representation of the rubric with hierarchical structure,
+            including criteria descriptions and performance descriptors.
+    """
     formatted_rubric = f"""
     Rubric ID: {rubric['rubric_id']}
 
@@ -230,13 +267,23 @@ def format_rubric(rubric):
 
 
 # Function to write output to md file
-def write_output_to_md(file_path, content):
+def write_output_to_md(file_path: str, content: str) -> None:
     """
-    Write content to a markdown file, creating or overwriting the file.
+    Writes content to a markdown file, creating or overwriting the file.
     
     Args:
-        file_path (str): Path to the output markdown file
-        content (str): Content to write to the file
+        file_path (str): Path to the output markdown file.
+        content (str): Content to write to the file.
+    
+    Raises:
+        PermissionError: If the process lacks permission to write to the file.
+        IOError: If there are issues during file writing operations.
+        Exception: For other unexpected errors during file operations.
+        
+    Notes:
+        - Uses fsync to ensure content is written to physical storage
+        - Verifies file existence and content after writing
+        - Logs success or failure of the operation
     """
     try:
         # Check if file exists first
@@ -267,7 +314,17 @@ def write_output_to_md(file_path, content):
 
 
 # Functions for model processing
-def process_prompt(hf, prompt):
+def process_prompt(hf: Any, prompt: List[Dict[str, str]]) -> List[Dict[str, Any]]:
+    """
+    Processes a prompt through the model pipeline and measures execution time.
+    
+    Args:
+        hf (Any): The initialized Hugging Face pipeline object for text generation.
+        prompt (List[Dict[str, str]]): The formatted prompt messages to send to the model.
+    
+    Returns:
+        List[Dict[str, Any]]: The model's response containing generated text.
+    """
     t1 = time.time()
     response = hf(prompt)
     t2 = time.time()
@@ -276,7 +333,18 @@ def process_prompt(hf, prompt):
     return response
 
 
-def extract_assistant_answer(response):
+def extract_assistant_answer(response: List[Dict[str, Any]]) -> tuple[str | None, str | None]:
+    """
+    Extracts the assistant's response and thinking process from the model output.
+    
+    Args:
+        response (List[Dict[str, Any]]): The raw response from the model pipeline.
+    
+    Returns:
+        tuple[str | None, str | None]: A tuple containing:
+            - answer (str | None): The main response content with think blocks removed
+            - thinking (str | None): The extracted content from think blocks, if any
+    """
     if not response:
         return None
     generated_text = response[0]['generated_text'] if response else ""
@@ -300,7 +368,22 @@ def extract_assistant_answer(response):
     return answer, thinking
 
 
-def initialise_model():
+def initialise_model() -> tuple[Any, str]:
+    """
+    Initializes the language model and tokenizer using environment variables.
+    
+    Returns:
+        tuple[Any, str]: A tuple containing:
+            - hf (Any): The initialized Hugging Face pipeline for text generation
+            - model_id (str): The identifier of the loaded model
+    
+    Notes:
+        Requires environment variables:
+            - MODEL_ID: The Hugging Face model identifier
+            - HF_TOKEN: Authentication token for Hugging Face Hub
+            
+        Uses local cache directory '.cache/huggingface' for model storage.
+    """
     logger.info("Loading environment variables and initializing model")
     load_dotenv()
 
