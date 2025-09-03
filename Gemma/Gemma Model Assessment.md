@@ -22,6 +22,96 @@ The model generates detailed, rubric-style feedback, including specific criteria
 | Feedback Quality       | 4/5                |
 | AI Detection Accuracy  | 33%                |
 
+## Evaluation
+
+### Human Evaluation
+
+##### 1. Feedback Generation
+- Clarity & Structure: Responses are rubric-style, structured, and well-aligned with evaluation criteria.
+- Weakness: Repetitive language, limited personalization, identical phrases across multiple submissions.
+
+Score: 4/5
+Reasoning: Clear, structured, but lacks originality and personalization.
+
+##### 2. AI Detection
+- Binary Classification Performance: Frequently misclassifies. Strong bias and tends to over-predict hybrid 
+AI-generated and human structured content are labeled incorrectly. And accuracy is very low (close to chance).
+
+Score: 1/5
+Reasoning: Detection is unreliable and unusable for real-world use.
+
+
+#### Submission based feedback
+##### 1. Submission
+
+- True Classification: AI
+- Model Prediction: hybrid
+- Evaluation Result: Wrong
+- Confidence Level: High
+-Key Observations: Structured, polished writing with formal tone. Gemma misclassified as hybrid due to generic fluency.
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+##### 2. Submission
+
+- True Classification: AI
+- Model Prediction: AI
+- Evaluation Result: Correct
+- Confidence Level: High
+- Key Observations: Technical termenology and sturctured writing. 
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+##### 3. Submission
+
+- True Classification: Human
+- Model Prediction: Hybrid
+- Evaluation Result: Wrong
+- Confidence Level: Hybrid
+- Key Observations: Natural imperfections misclassified as Hybrid.
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+##### 4. Submission
+
+- True Classification: Human
+- Model Prediction: Hybrid
+- Evaluation Result: Wrong
+- Confidence Level: High
+- Key Observations: Describes lived experience as junior analyst. Imperfect flow, but Gemma misclassified.
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+##### 5. Submission
+
+- True Classification: Hybrid
+- Model Prediction: Hybrid
+- Evaluation Result: correct
+- Confidence Level: Medium
+- Key Observations: Mix of AI-like structure and human  reflection. Over-classified as hybrid, missing the nuance.
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+##### 6. Submission
+
+- True Classification: Hybrid
+- Model Prediction: Hybrid
+- Evaluation Result: correct
+- Confidence Level: Medium
+- Key Observations: Balanced account of AI + human collaboration in red/blue team context.
+- Rater: Umar Khayam
+- Date: 04/09/2025
+
+
+### GenAI Evaluation
+### Gen AI Rating
+
+- Feedback Generation Quality: 4/5
+Gemma generates structured, rubric-style feedback with clear criteria and detailed points. It produces professional and academic-style responses, which makes it useful in evaluation tasks. However, it often repeats phrasing (e.g., “The submission demonstrates a solid understanding...”) and lacks personalization, so feedback can feel generic across different inputs.
+
+- AI Detection Accuracy: 1/5
+Gemma shows a strong bias when labeling human vs. AI vs hybrid submissions. It tends to misclassify, often leaning too heavily toward one category. The detection is unreliable and cannot be used in real-world classification tasks.
+
 ## Detailed Analysis
 ### Feedback Generation Issues and Strengths
 While the high-level summary is generic, the model excels at breaking down its evaluation into a structured format.
