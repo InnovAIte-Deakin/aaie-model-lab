@@ -19,7 +19,7 @@ Date: 2025-08-31 20:55:19
 
 **Detection Answer for submission 0 in accounting.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The response includes specific examples (Ernst & Young, JPMorgan) and addresses challenges like regulatory uncertainty, scalability, and technical expertise.  
@@ -33,7 +33,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 0 in accounting.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a written analysis of blockchain technology's impact on accounting practices. First, I need to determine if it's Human, AI-assisted, or Hybrid.
 
@@ -47,7 +47,7 @@ The flags would be Hybrid since there's some AI-assisted elements, like the ment
 
 **Feedback Answer for submission 0 in accounting.json**
 
-```json
+```
 1) Overall Summary: The student effectively highlights blockchain's transformative impact on traditional accounting, emphasizing its role in improving efficiency, data integrity, and automation. Their examples (Ernst & Young and JPMorgan) are relevant and demonstrate a clear understanding of blockchain's applications. However, the student's analysis needs to address the challenges they've mentioned, such as regulatory and technical barriers, which are critical for a comprehensive evaluation.  
 
 2) Criteria Feedback:  
@@ -61,7 +61,7 @@ Suggested Grade: **Excellent**.
 
 **Feedback Thinking for submission 0 in accounting.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission to the rubric for the accounting assignment. The student discusses blockchain's impact on traditional accounting, mentioning key points like decentralization, immutability, smart contracts, automation, and examples from Ernst & Young and JPMorgan. They also note challenges like regulatory issues and technical barriers.
 
@@ -83,7 +83,7 @@ Putting it all together, the student's feedback should highlight their strengths
 
 **Detection Answer for submission 1 in accounting.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The essay clearly defines blockchain and its key features (decentralization, immutability, transparency), and provides real-world applications (Ernst & Young, IBM).  
@@ -97,7 +97,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 1 in accounting.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about blockchain technology and its impact on traditional accounting practices. The essay starts by defining blockchain and its key features. It mentions decentralization, immutability, and transparency, which are important points.
 
@@ -111,7 +111,7 @@ Wait, the example given in the user's previous prompt doesn't have any examples,
 
 **Feedback Answer for submission 1 in accounting.json**
 
-```json
+```
 1) Overall Summary:  
 The student effectively highlights blockchain's impact on accounting practices, particularly in auditing and financial reporting. They demonstrate a strong grasp of blockchain concepts (decentralization, immutability, smart contracts) and provide concrete examples (EY's Blockchain Analyzer and IBM's supply chain finance). The essay is well-structured and maintains an academic tone.  
 
@@ -126,7 +126,7 @@ The student effectively highlights blockchain's impact on accounting practices, 
 
 **Feedback Thinking for submission 1 in accounting.json**
 
-```json
+```
 
 Okay, let's start by reviewing the student's submission. They talk about blockchain's impact on traditional accounting, mentioning immutability, decentralization, and examples like EY's Blockchain Analyzer and IBM's supply chain finance. The essay seems to cover key points: immutability in audits, automation in financial reporting, and real-world applications. 
 
@@ -146,7 +146,7 @@ Putting it all together, the strengths are clear understanding of concepts and e
 
 **Detection Answer for submission 2 in accounting.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The student's writing reflects a mix of personal insights and analysis, blending their own perspective with some AI assistance.  
@@ -159,7 +159,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 2 in accounting.json**
 
-```json
+```
 
 Okay, let me start by reading through the student submission to understand what they're saying. The student is a business student interested in technology, specifically blockchain. They talk about how blockchain revolutionizes traditional accounting, mentioning real-time transactions, reduced fraud, and companies like IBM using it for supply chain finance. They also talk about auditing benefits and the challenges like high costs and lack of standards.
 
@@ -171,7 +171,7 @@ I should check for repetition and clichés. The student is pointing out benefits
 
 **Feedback Answer for submission 2 in accounting.json**
 
-```json
+```
 1) Overall Summary: The student effectively highlights blockchain's transformative potential in accounting, noting improvements in accuracy, automation, and real-time reporting. While acknowledging challenges, they demonstrate a clear grasp of concepts (c1) and provide relevant examples (c3). The essay balances strengths with areas for growth.  
 
 2) Criteria Feedback:  
@@ -185,7 +185,7 @@ I should check for repetition and clichés. The student is pointing out benefits
 
 **Feedback Thinking for submission 2 in accounting.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student is a business student interested in blockchain, and they talk about its impact on traditional accounting. They mention benefits like reduced errors, automation, and real-time reporting, but also acknowledge challenges such as setup costs, lack of standards, and privacy issues.
 
@@ -199,7 +199,7 @@ The student's feedback should highlight strengths like understanding concepts an
 
 **Detection Answer for submission 3 in accounting.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - Point 1: The student is a business student with a personal fascination for tech, clearly representing human insight.  
@@ -211,7 +211,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 3 in accounting.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a detailed analysis of blockchain's impact on accounting and financial reporting. The user wants me to label it as Human, AI, or Hybrid. 
 
@@ -227,7 +227,7 @@ So, the label is Human, and the rationale points out the human elements and abse
 
 **Feedback Answer for submission 3 in accounting.json**
 
-```json
+```
 1) Overall Summary: The student demonstrates a clear understanding of blockchain's impact on accounting (e.g., reducing bookkeeping errors, enhancing audit transparency) and acknowledges its benefits like automation. However, they note challenges such as cost, standards, and privacy concerns. The student's approach is structured and academic, though they could expand on specific applications and address practical barriers more thoroughly.  
 
 2) Criteria Feedback:  
@@ -241,7 +241,7 @@ So, the label is Human, and the rationale points out the human elements and abse
 
 **Feedback Thinking for submission 3 in accounting.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student is an accounting student interested in blockchain, so they're showing some understanding. Let me break down each criterion.
 
@@ -267,7 +267,7 @@ So, putting it all together, the student's feedback is mostly good, but they nee
 
 **Detection Answer for submission 4 in accounting.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission is a well-structured academic essay discussing blockchain's impact on traditional accounting practices, with specific examples and logical arguments.  
@@ -280,7 +280,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 4 in accounting.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about blockchain's impact on accounting, auditing, and financial reporting. The user wants me to label it as Human, AI, or Hybrid. 
 
@@ -296,7 +296,7 @@ So, the label should be Human with no flags. The essay is a human-written respon
 
 **Feedback Answer for submission 4 in accounting.json**
 
-```json
+```
 1) Overall Summary:  
 The student's analysis effectively outlines blockchain's impact on accounting practices, highlighting key benefits like increased transparency, automation, and real-time auditing. The response demonstrates a clear understanding of blockchain concepts and their relevance to accounting, with detailed examples of smart contracts and real-time data processing. However, the student could refine the depth of their analysis to include more specific applications or challenges in implementation.  
 
@@ -311,7 +311,7 @@ The student's analysis effectively outlines blockchain's impact on accounting pr
 
 **Feedback Thinking for submission 4 in accounting.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's response. The student provided a detailed analysis of how blockchain impacts accounting practices. They mention enhanced transparency, automation, and real-time auditing. Each of these points is well-explained, so that's good. 
 
@@ -329,7 +329,7 @@ The student's response doesn't mention any issues with the criteria. So the feed
 
 **Detection Answer for submission 5 in accounting.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The text clearly discusses blockchain's impact on accounting practices, including efficiency, transparency, security, and automation.  
@@ -344,7 +344,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 5 in accounting.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a well-structured academic text discussing blockchain's impact on traditional accounting. I need to determine if it's Human, AI, or Hybrid.
 
@@ -364,7 +364,7 @@ Flags: Since it's discussing a topic with both human insights and AI assistance 
 
 **Feedback Answer for submission 5 in accounting.json**
 
-```json
+```
 1) Overall Summary:  
 The student's submission effectively demonstrates a strong grasp of blockchain's impact on traditional accounting practices, including enhanced transparency, automation, and audit efficiency. While the analysis is thorough, it needs refinement in structure and transition between ideas to align with academic standards.  
 
@@ -379,7 +379,7 @@ The student's submission effectively demonstrates a strong grasp of blockchain's
 
 **Feedback Thinking for submission 5 in accounting.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student provided a detailed analysis of blockchain's impact on accounting. First, I need to check each criterion against the rubric.
 
@@ -403,7 +403,7 @@ So, the overall summary should highlight strengths in understanding concepts and
 
 **Detection Answer for submission 0 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - point 1: The submission is written by a human with clear explanation of a structured production line process.  
@@ -416,7 +416,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 0 in engineering.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a detailed explanation of setting up a production line. The user wants me to label it as Human, AI, or Hybrid. 
 
@@ -432,7 +432,7 @@ So, the answer should be Human with the rationale pointing out that it's a human
 
 **Feedback Answer for submission 0 in engineering.json**
 
-```json
+```
 1) Overall Summary: The student provided a comprehensive overview of a basic production line setup, covering design validation, equipment selection, layout, efficiency, safety, and pilot runs. While the response effectively outlines the process, it lacks specific details on tools, methods, or technical terminology used. Prioritizing clarity and depth would enhance the overall structure.  
 
 2) Criteria Feedback:  
@@ -447,7 +447,7 @@ So, the answer should be Human with the rationale pointing out that it's a human
 
 **Feedback Thinking for submission 0 in engineering.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's submission and applying the rubric criteria. 
 
@@ -475,7 +475,7 @@ Wait, the student's response is already good. Let me verify each criterion again
 
 **Detection Answer for submission 1 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission clearly describes a step-by-step process by a human manufacturing engineer, incorporating design, workflow, machinery, and testing elements.  
@@ -489,7 +489,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 1 in engineering.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a detailed description of a manufacturing engineer's process. The first thing I notice is that the text starts with understanding the final product's design. That sounds like a human contribution, right? The engineer is taking the design into account. Then they talk about identifying critical dimensions, materials, and assembly steps. This part seems to be human writing, so that's a human element.
 
@@ -499,7 +499,7 @@ Next, they mention using digital tools for design, workflows, machinery selectio
 
 **Feedback Answer for submission 1 in engineering.json**
 
-```json
+```
 1) Overall Summary: The student successfully outlines a comprehensive production line setup, covering design, workflow, machinery selection, layout, efficiency, safety, and pilot testing. The response addresses all key phases, demonstrating thorough understanding of manufacturing principles and clear communication.  
 
 2) Criteria Feedback:  
@@ -514,7 +514,7 @@ Next, they mention using digital tools for design, workflows, machinery selectio
 
 **Feedback Thinking for submission 1 in engineering.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student explains how a manufacturing engineer sets up a production line. They mention understanding the product design, identifying critical dimensions and materials, using digital tools for design, choosing machinery based on process needs, layout decisions to reduce waste, simulations for testing, defining efficiency metrics, safety measures, and pilot testing. 
 
@@ -540,7 +540,7 @@ So putting it all together. The feedback should highlight strengths like thoroug
 
 **Detection Answer for submission 2 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - Point 1: The student provides a detailed description of a manufacturing engineer's process, including design analysis, planning, implementation, and testing.  
@@ -552,7 +552,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 2 in engineering.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a detailed description of a manufacturing engineer's process. I need to determine if it's Human, AI, or Hybrid. 
 
@@ -566,7 +566,7 @@ Flags would include "Human" since there's no AI mention. The points are clear, a
 
 **Feedback Answer for submission 2 in engineering.json**
 
-```json
+```
 1) Overall Summary: The student provides a comprehensive overview of a manufacturing engineer’s process for setting up a production line, covering design, steps, equipment placement, safety, and testing. They effectively address most aspects of the process with minimal inaccuracies, demonstrating a good understanding of core elements.  
 
 2) Criteria Feedback:  
@@ -581,7 +581,7 @@ Flags would include "Human" since there's no AI mention. The points are clear, a
 
 **Feedback Thinking for submission 2 in engineering.json**
 
-```json
+```
 
 Okay, let me start by analyzing the student's submission. They describe a manufacturing engineer's process for setting up a production line for a new consumer product. 
 
@@ -607,7 +607,7 @@ Putting this all together, the feedback should highlight strengths, mention the 
 
 **Detection Answer for submission 3 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission clearly describes a step-by-step process for setting up a production line, similar to academic writing about engineering principles.  
@@ -621,7 +621,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 3 in engineering.json**
 
-```json
+```
 
 Okay, let me look at this new submission. The student wrote about setting up a production line. The structure seems similar to what I've seen in previous academic texts. They start by learning about the product, then break it down into steps, match tools, place machines in order, ensure safety, test before production. That's a typical process for a manufacturing engineer.
 
@@ -633,7 +633,7 @@ Flags would be "Human" since it's a natural writing process. I don't see any fla
 
 **Feedback Answer for submission 3 in engineering.json**
 
-```json
+```
 1) **Overall Summary**:  
 This student effectively outlines a production line setup process, covering design to assembly, equipment layout, safety, and testing. They demonstrate a strong grasp of manufacturing principles and structure, showing a clear understanding of all key aspects. The response is professional, concise, and addresses all required criteria.  
 
@@ -649,7 +649,7 @@ This student effectively outlines a production line setup process, covering desi
 
 **Feedback Thinking for submission 3 in engineering.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student described the setup process for a new production line, starting with learning about the product, breaking it into steps, using tools, placing machines in order, ensuring workers don't walk far, safety measures, and testing before production.
 
@@ -679,7 +679,7 @@ I think that's all. The feedback should highlight the strengths and priorities, 
 
 **Detection Answer for submission 4 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission includes a detailed explanation of the production line setup process, integrating technical planning, practical foresight, and specific methods like Gantt charts, lean manufacturing, and safety measures.  
@@ -692,7 +692,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 4 in engineering.json**
 
-```json
+```
 
 Okay, let me take a look at this submission. The user is asking about setting up a production line. The student wrote a detailed explanation. 
 
@@ -708,7 +708,7 @@ So, the label should be Human. The rationale points out the detailed explanation
 
 **Feedback Answer for submission 4 in engineering.json**
 
-```json
+```
 1) Overall Summary: The process demonstrates a comprehensive understanding of a manufacturing engineer's responsibilities from design to assembly. The response covers all key phases (design, equipment selection, layout, efficiency, safety), integrates technical principles (process maps, takt time), and highlights practical considerations (tool use, safety protocols). The structure and depth of analysis are well-organized, showing strong technical acumen.
 
 2) Criteria Feedback:  
@@ -728,7 +728,7 @@ Suggested Grade: **Excellent**
 
 **Feedback Thinking for submission 4 in engineering.json**
 
-```json
+```
 
 Okay, let me start by analyzing the student's submission. The student provided a detailed description of setting up a production line. 
 
@@ -752,7 +752,7 @@ Now, the student's response seems comprehensive and meets all the criteria. The 
 
 **Detection Answer for submission 5 in engineering.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The text describes a detailed process of setting up a production line, including technical design, real-world testing, layout planning, and optimization.  
@@ -766,7 +766,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 5 in engineering.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a detailed description of setting up a production line. The user wants me to classify it as Human, AI, or Hybrid.
 
@@ -780,7 +780,7 @@ Flags: The student is clearly writing in a human manner, so the flags would be H
 
 **Feedback Answer for submission 5 in engineering.json**
 
-```json
+```
 1) Overall Summary: The student provided a comprehensive explanation of a basic production line setup, covering design to assembly, equipment layout, efficiency, and safety. The response effectively outlines key steps such as design review, sequence identification, machine selection, layout planning, optimization through takt time and simulation, and safety measures. The student also included testing and feedback loops as part of the process.
 
 2) Criteria Feedback:  
@@ -795,7 +795,7 @@ Flags: The student is clearly writing in a human manner, so the flags would be H
 
 **Feedback Thinking for submission 5 in engineering.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's response. The student described setting up a basic production line, covering design, layout, efficiency, safety, and testing. 
 
@@ -821,7 +821,7 @@ The improvement tip could be adding specific examples for each analysis point to
 
 **Detection Answer for submission 0 in it.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - point 1: The student explicitly states the role of AI in cybersecurity through specific technical terms (e.g., "machine learning algorithms," "real-time data analysis").  
@@ -833,7 +833,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 0 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about AI in cybersecurity. The main points are automation, threat detection, incident response, and reducing false positives. The example they gave is a simple statement about AI's role in cybersecurity.
 
@@ -849,7 +849,7 @@ So, the label should be Human. The rationale points out the clear human writing 
 
 **Feedback Answer for submission 0 in it.json**
 
-```json
+```
 1) Overall Summary:  
 The student effectively addresses AI's role in cybersecurity by highlighting its applications (automating threat detection, reducing false positives) and examples (SIEM systems). The response demonstrates a clear grasp of the topic and provides relevant real-world context.  
 
@@ -865,7 +865,7 @@ Suggested Grade: **Good** (excellent for strengths, needs improvement for areas 
 
 **Feedback Thinking for submission 0 in it.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's submission. The student mentions AI's role in cybersecurity, like automating detection and reducing false positives. 
 
@@ -889,7 +889,7 @@ Putting this all together, the feedback should highlight the strengths, mention 
 
 **Detection Answer for submission 1 in it.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission explicitly discusses AI-based cybersecurity solutions, such as behavioral analytics and deep learning, without mentioning AI assistance or hybrid use.  
@@ -901,7 +901,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 1 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about AI-based cybersecurity solutions. The first part mentions AI-based solutions like behavioral analytics and automated intrusion detection systems. The second part talks about deep learning models being used to detect phishing and ransomware faster than manual methods.
 
@@ -911,7 +911,7 @@ I need to check if this is Human, AI, or Hybrid. The key here is whether the stu
 
 **Feedback Answer for submission 1 in it.json**
 
-```json
+```
 1) Overall Summary:  
 The student provides a clear and concise explanation of AI's role in cybersecurity, highlighting applications like behavioral analytics and deep learning for detecting threats. However, they lack specific examples of how these technologies work in practice and should consider depth in explaining their implications.  
 
@@ -927,7 +927,7 @@ The student provides a clear and concise explanation of AI's role in cybersecuri
 
 **Feedback Thinking for submission 1 in it.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's response. They mentioned AI-based cybersecurity solutions like behavioral analytics and automated intrusion detection systems, and how deep learning helps detect phishing and ransomware faster. 
 
@@ -949,7 +949,7 @@ So, the student's response is good on some points but needs more depth and origi
 
 **Detection Answer for submission 2 in it.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The student provides specific examples of AI's effectiveness (picking up odd phrasing patterns).  
@@ -962,7 +962,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 2 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about a phishing incident where the company used a new AI email filter. The original system didn't catch certain emails. The student was skeptical initially but found the AI picked up specific patterns. The key points here are that the AI was effective, and it changed the student's perspective on AI in cybersecurity.
 
@@ -972,7 +972,7 @@ Now, considering the guidelines, I need to determine if it's Human, AI, or Hybri
 
 **Feedback Answer for submission 2 in it.json**
 
-```json
+```
 1) Overall Summary:  
 The student demonstrated a clear understanding of AI's role in cybersecurity by discussing an incident where AI enhanced phishing detection. Their application of AI in a real-world context highlights both strengths and a positive perspective on its impact.  
 
@@ -988,7 +988,7 @@ Suggested Grade: **Good**.
 
 **Feedback Thinking for submission 2 in it.json**
 
-```json
+```
 
 Okay, let's start by breaking down the student's submission. They mentioned their company faced a phishing campaign and used a new AI email filter that improved their system's ability to detect phishing. The student was skeptical initially but saw the AI's effectiveness. 
 
@@ -1008,7 +1008,7 @@ Putting it all together, the overall summary should highlight their strengths in
 
 **Detection Answer for submission 3 in it.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - point 1: The student writes from a human perspective, describing their experience and the transition to an AI tool.  
@@ -1020,7 +1020,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 3 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about a junior security analyst who used to handle alerts manually and then integrated an AI tool. The key points here are that the AI reduced triage time by more than half and mentioned the system's ability to learn and adapt. 
 
@@ -1034,7 +1034,7 @@ Flags: The response should be labeled as Hybrid since it combines human writing 
 
 **Feedback Answer for submission 3 in it.json**
 
-```json
+```
 1) Overall Summary: The student demonstrates a clear understanding of AI's role in cybersecurity, applying it to real-world scenarios (e.g., reducing alert triage time). Their insights into adaptability and the potential benefits of AI highlight both strengths and areas for improvement.  
 
 2) Criteria Feedback:  
@@ -1049,7 +1049,7 @@ Suggested Grade: **Average**.
 
 **Feedback Thinking for submission 3 in it.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's response. They're a junior security analyst, so their experience might be more basic than the rubric's expectations. The student mentions integrating an AI tool to reduce alert triage time, which is a clear application to real-world cybersecurity scenarios. The part about the system learning and adapting is a good example of critical thinking, showing understanding of AI's role in cybersecurity.
 
@@ -1065,7 +1065,7 @@ So, putting this all together, the strengths are in their application of AI and 
 
 **Detection Answer for submission 4 in it.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The student explicitly acknowledges the use of AI in monitoring user activity.  
@@ -1079,7 +1079,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 4 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a paragraph about using AI to monitor user activity. The first sentence mentions "We used AI to monitor user activity across our cloud environment." That's a straightforward human statement, talking about the use of AI. Then they mention that while the algorithm caught some abnormal logins, there were false alarms that confused junior staff. The next part talks about training and updating the model, and that AI brought speed but human expertise improved accuracy. Finally, it concludes with collaboration leading to both speed and accuracy.
 
@@ -1089,7 +1089,7 @@ Now, looking at the guidelines, I need to check if this is Human, AI, or Hybrid.
 
 **Feedback Answer for submission 4 in it.json**
 
-```json
+```
 1) Overall Summary: The student demonstrated a clear understanding of AI's role in cybersecurity, applying it to monitor user activity and improving system accuracy through training. The response provided relevant examples and highlighted collaboration, which aligns with the rubric's strengths. However, there are areas for improvement in critical thinking and clarity.  
 
 2) Criteria Feedback:  
@@ -1104,7 +1104,7 @@ Now, looking at the guidelines, I need to check if this is Human, AI, or Hybrid.
 
 **Feedback Thinking for submission 4 in it.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's response. The student mentioned using AI to monitor user activity, catching some abnormal logins, but raising false alarms. They also mention training and updating the model, collaboration with junior staff, and the balance between speed and accuracy. 
 
@@ -1126,7 +1126,7 @@ So the overall summary would highlight strengths in understanding and applicatio
 
 **Detection Answer for submission 5 in it.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission explicitly highlights the human role in lateral movement (analysts noticing subtle signs), which is a human perspective.  
@@ -1140,7 +1140,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 5 in it.json**
 
-```json
+```
 
 Okay, let's see. The student submission talks about a red team and blue team exercise where their AI tools were good at identifying command-and-control traffic, but when lateral movement was involved, it was their analysts who noticed the subtle signs. The AI was a force multiplier, not a silver bullet, and the balance between automation and intuition is important.
 
@@ -1154,7 +1154,7 @@ The flags part is not specified, so I'll leave that as an empty list. The struct
 
 **Feedback Answer for submission 5 in it.json**
 
-```json
+```
 1) Overall Summary: The student effectively demonstrates a clear understanding of AI's role in cybersecurity, showing strengths in identifying command-and-control traffic and highlighting the balance between automation and human intuition. The feedback emphasizes the value of integrating AI's strengths with human expertise to enhance cybersecurity effectiveness.  
 
 2) Criteria Feedback:  
@@ -1169,7 +1169,7 @@ Suggested Grade: **Excellent**.
 
 **Feedback Thinking for submission 5 in it.json**
 
-```json
+```
 
 Okay, let's see. The student's submission is about a red team and blue team exercise using AI. They mention the AI identified command-and-control traffic well but that when lateral movement was involved, it was the experienced analysts who noticed the subtle signs. Also, they say the AI was a force multiplier, not a silver bullet, and the balance between automation and intuition is important.
 
@@ -1193,7 +1193,7 @@ Now, the student's grade would be excellent because they met all the criteria. T
 
 **Detection Answer for submission 0 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission clearly discusses cognitive biases and their effects on decision-making, with specific examples and references.  
@@ -1207,7 +1207,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 0 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a text that discusses cognitive biases and their effects on human decision-making. The first thing I notice is that it starts with a general statement about cognitive biases influencing judgment, which is a common topic in academic writing. The examples provided (confirmation bias, anchoring bias, availability heuristic) are all well-known and consistent with the examples given in the guidelines. The structure seems to follow a logical flow, discussing different types of biases with their examples. 
 
@@ -1221,7 +1221,7 @@ So, based on this analysis, the submission is labeled as Human. The rationale in
 
 **Feedback Answer for submission 0 in psychology.json**
 
-```json
+```
 1) Overall Summary: The student provided a comprehensive analysis of cognitive biases influencing decision-making, including three key examples (confirmation bias in healthcare, anchoring in consumer behavior, and availability heuristic in legal contexts). The student effectively connected biases to real-world applications and discussed strategies for mitigation, demonstrating strong conceptual understanding and a clear focus on academic writing.  
 
 2) Criteria Feedback:  
@@ -1250,7 +1250,7 @@ Suggested Grade: **A**
 
 **Feedback Thinking for submission 0 in psychology.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. They've evaluated cognitive biases and provided real-world examples, but I need to check if they meet the rubric's criteria.
 
@@ -1274,7 +1274,7 @@ So, the final response should summarize the strengths and priorities, then provi
 
 **Detection Answer for submission 1 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The essay is written by the student independently, addressing cognitive biases in decision-making with real-world examples.  
@@ -1287,7 +1287,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 1 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a well-structured essay about cognitive biases in decision-making. The user wants me to label it as Human, AI, or Hybrid based on the guidelines. 
 
@@ -1303,7 +1303,7 @@ I need to make sure I'm not missing any other criteria. The essay is clear and l
 
 **Feedback Answer for submission 1 in psychology.json**
 
-```json
+```
 1) Overall Summary:  
 The student effectively addresses the role of cognitive biases in decision-making, highlighting three key examples (confirmation bias, anchoring, availability heuristic) and their real-world impacts. The references to relevant psychological theories (confirmation bias, anchoring, availability heuristic) are accurate. The structure and focus on practical applications are strong, indicating a solid understanding of the topic.  
 
@@ -1333,7 +1333,7 @@ The student effectively addresses the role of cognitive biases in decision-makin
 
 **Feedback Thinking for submission 1 in psychology.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. They mentioned cognitive biases in relationships, consumer behavior, and healthcare, with examples like confirmation bias, anchoring bias, and availability heuristic. They also provided references to Nickerson and Tversky.
 
@@ -1359,7 +1359,7 @@ I need to make sure the feedback is precise and aligned with the rubric. Let me 
 
 **Detection Answer for submission 2 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission presents a coherent and structured analysis of cognitive biases, with specific references to key authors.  
@@ -1372,7 +1372,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 2 in psychology.json**
 
-```json
+```
 
 Okay, let me look at this submission. The student wrote about cognitive biases like confirmation bias, anchoring, availability heuristic, and how to address them. The content seems to be in a clear, structured academic tone. There's a reference list with both Nickerson and Tversky's papers. The language is precise, using terms like "cognitive biases" and "strategies" to show understanding.
 
@@ -1382,7 +1382,7 @@ Now, considering the guidelines, the student is presenting information about bia
 
 **Feedback Answer for submission 2 in psychology.json**
 
-```json
+```
 1) Overall Summary:  
 The student effectively highlights the influence of cognitive biases on decision-making, providing examples and strategies for mitigation. Their explanation aligns with the rubric's strengths, particularly in conceptual understanding and real-world application. The references are accurate, and the improvement tip of discussing psychological theories behind biases is actionable.  
 
@@ -1397,7 +1397,7 @@ The student effectively highlights the influence of cognitive biases on decision
 
 **Feedback Thinking for submission 2 in psychology.json**
 
-```json
+```
 
 Okay, let me start by looking at the student's submission. They discussed cognitive biases like confirmation bias, anchoring, and the availability heuristic, with examples from real life. The references are correct, but I need to check if the feedback aligns with the rubric criteria.
 
@@ -1419,7 +1419,7 @@ The suggested grade is "Good," which matches the student's strengths but needs s
 
 **Detection Answer for submission 3 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The text discusses cognitive biases with examples and references, showing human writing.  
@@ -1433,7 +1433,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 3 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a text that discusses cognitive biases. The user wants me to label it as Human, AI, or Hybrid. 
 
@@ -1451,7 +1451,7 @@ Flags: The student is making a human writing. So the label is Human. The reasoni
 
 **Feedback Answer for submission 3 in psychology.json**
 
-```json
+```
 1) Overall Summary: The student effectively highlights the role of cognitive biases in shaping human decision-making, providing clear examples (confirmation bias, anchoring) and discussing real-world applications (law, consumer behavior). The references are correctly cited, and the student demonstrates a good grasp of the psychological theories behind these biases. The focus is on understanding, applying, and mitigating biases, which aligns with the rubric's strengths.  
 
 2) Criteria Feedback:  
@@ -1480,7 +1480,7 @@ Flags: The student is making a human writing. So the label is Human. The reasoni
 
 **Feedback Thinking for submission 3 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student provided a response that discusses cognitive biases and their real-world applications. The feedback needs to be structured according to the rubric criteria. 
 
@@ -1500,7 +1500,7 @@ The final suggested grade would be good based on the student's work.
 
 **Detection Answer for submission 4 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - Point 1: The submission presents a structured academic analysis of cognitive biases and their impact, with specific examples and references.  
@@ -1512,7 +1512,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 4 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a well-structured academic paper discussing cognitive biases. The first part mentions specific examples like confirmation bias, anchoring, and the availability heuristic. It lists these biases and their impact in healthcare, law, and consumer behavior. Then it talks about awareness and strategies to mitigate their influence.
 
@@ -1522,7 +1522,7 @@ I need to determine if it's Human, AI, or Hybrid. The student is writing an acad
 
 **Feedback Answer for submission 4 in psychology.json**
 
-```json
+```
 1) Overall Summary: The student effectively identifies cognitive biases such as confirmation bias, anchoring, and the availability heuristic, and explains their influence on real-world decision-making. They demonstrate a clear understanding of their applications in healthcare, law, and consumer behavior, along with the psychological theories behind these biases. The student also highlights the importance of awareness and strategies to mitigate their impact, showing a well-rounded approach to the topic.  
 
 2) Criteria Feedback:  
@@ -1551,7 +1551,7 @@ I need to determine if it's Human, AI, or Hybrid. The student is writing an acad
 
 **Feedback Thinking for submission 4 in psychology.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's submission. They talk about cognitive biases shaping decision-making, their examples in real-world contexts, and their references. 
 
@@ -1573,7 +1573,7 @@ I need to make sure each criterion is addressed with the correct rating, evidenc
 
 **Detection Answer for submission 5 in psychology.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission presents a clear analysis of cognitive biases with specific examples and references.  
@@ -1587,7 +1587,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 5 in psychology.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about cognitive biases and their impact on decision-making. The content starts by listing three common biases—confirmation bias, anchoring, and availability heuristic—and explains their effects in healthcare, law, and consumer behavior. Then it mentions strategies to mitigate their impact like reflective thinking and seeking diverse viewpoints.
 
@@ -1599,7 +1599,7 @@ Looking at the submission, the author is presenting the information clearly, cit
 
 **Feedback Answer for submission 5 in psychology.json**
 
-```json
+```
 1) Overall Summary: The student effectively discussed cognitive biases (confirmation bias, anchoring, availability heuristic) and their real-world impacts, with a focus on healthcare, law, and consumer behavior. The response demonstrates a clear understanding of the concepts and their significance, though it lacks depth in explaining the psychological theories behind the biases.  
 
 2) Criteria Feedback:  
@@ -1628,7 +1628,7 @@ Looking at the submission, the author is presenting the information clearly, cit
 
 **Feedback Thinking for submission 5 in psychology.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's submission. They mentioned cognitive biases like confirmation bias, anchoring, and availability heuristic, and how they affect decision-making in real-world scenarios. They also provided some references.
 
@@ -1652,7 +1652,7 @@ The suggested grade would be good, as they met the criteria and provided some re
 
 **Detection Answer for submission 0 in teaching.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The submission includes specific academic references (Justice & Ezell, 2002; Lonigan et al., 2008) and structured arguments.  
@@ -1665,7 +1665,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 0 in teaching.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about early literacy development. The first thing I notice is the use of specific terms like phonological awareness, vocabulary, and print knowledge. The structure seems to be a well-organized paragraph with references to specific authors and studies. The language is formal and academic, which aligns with the guidelines. The content is evidence-based, discussing strategies like dialogic reading and phonemic games. There's mention of adapting these strategies for diverse learners, which shows some consideration of different needs. The example given includes both specific studies and a conclusion that ties it all together. The use of flags like "Hybrid" might be appropriate here because it's human writing with some AI assistance, but I should check if there's any mention of mixed use. The submission doesn't include any flags other than the label. So, based on the analysis, it's a hybrid because it's human writing with some AI assistance but also follows the academic guidelines.
 
@@ -1673,7 +1673,7 @@ Okay, let's see. The student submission is about early literacy development. The
 
 **Feedback Answer for submission 0 in teaching.json**
 
-```json
+```
 1) Overall Summary:  
 The student effectively addresses current research on early literacy development, highlights key components like phonological awareness and print knowledge, and emphasizes evidence-based strategies such as dialogic reading. They also acknowledge the importance of adapting approaches for diverse learners, demonstrating a strong understanding of the topic. The structure is clear, with a focused argument that reflects academic rigor.  
 
@@ -1689,7 +1689,7 @@ The student effectively addresses current research on early literacy development
 
 **Feedback Thinking for submission 0 in teaching.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The user wants actionable feedback for their teaching assignment. The rubric is for early literacy development and pre-reading skills. 
 
@@ -1713,7 +1713,7 @@ Overall, the student did a strong job. But maybe they could make the conclusion 
 
 **Detection Answer for submission 1 in teaching.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The response accurately identifies key aspects of early literacy development, including phonological awareness, vocabulary, and print skills, which are standard in academic contexts.  
@@ -1727,7 +1727,7 @@ Expected Label: AI
 
 **Detection Thinking for submission 1 in teaching.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a response to the question about early literacy development. The user wants me to determine if it's Human, AI, or Hybrid based on the guidelines.
 
@@ -1747,7 +1747,7 @@ So in the response, I need to state Label, then Rationale, then Flags. The flags
 
 **Feedback Answer for submission 1 in teaching.json**
 
-```json
+```
 1) Overall Summary:  
 This response effectively highlights the importance of early literacy development, including phonological awareness, vocabulary, and print knowledge, as well as evidence-based approaches like shared book reading and phonemic games. It acknowledges the role of diversity in supporting learners and addresses inclusion by adjusting strategies for different backgrounds. While the analysis is solid, more detailed implementation strategies could enhance the argument. The academic tone is formal, and sources are appropriately cited.  
 
@@ -1763,7 +1763,7 @@ This response effectively highlights the importance of early literacy developmen
 
 **Feedback Thinking for submission 1 in teaching.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's response to the rubric criteria.
 
@@ -1787,7 +1787,7 @@ So, putting it all together, the student's response meets most criteria. The str
 
 **Detection Answer for submission 2 in teaching.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The student provides a well-structured, academic analysis discussing early literacy development.  
@@ -1802,7 +1802,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 2 in teaching.json**
 
-```json
+```
 
 Okay, let me try to figure this out. The user wants me to classify the student submission as Human, AI, or Hybrid. The guidelines mention considering discourse features like specificity, subjectivity, personal context, style consistency, local/global coherence, repetitiveness, and cliché patterns.
 
@@ -1820,7 +1820,7 @@ Flags: No flags mentioned. So, based on the analysis, it's a Human submission be
 
 **Feedback Answer for submission 2 in teaching.json**
 
-```json
+```
 1) Overall Summary:  
 The student demonstrates a strong understanding of early literacy development, highlighting phonological awareness and vocabulary as critical components, with clear references to Lonigan et al. (2000) for evidence. They also touch on the importance of print conventions, showcasing a comprehensive grasp of key developmental milestones. However, the student's response lacks a detailed evaluation of evidence-based approaches and needs to address diversity and inclusion more effectively.
 
@@ -1836,7 +1836,7 @@ Suggested Grade: Good
 
 **Feedback Thinking for submission 2 in teaching.json**
 
-```json
+```
 
 Okay, let's start by looking at the student's submission. They talk about early literacy development, especially phonological awareness and vocabulary. They mention that phonological awareness predicts later reading and use a reference to Lonigan et al. (2000). They also note that vocabulary expands quickly and that children understand print concepts.
 
@@ -1860,7 +1860,7 @@ Putting it all together, the student has a good understanding of early literacy 
 
 **Detection Answer for submission 3 in teaching.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission clearly identifies early literacy development starting before school, with specific examples of skills (phonological awareness, vocabulary, letters recognition).  
@@ -1872,7 +1872,7 @@ Expected Label: Human
 
 **Detection Thinking for submission 3 in teaching.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about early literacy development starting before children enter school. The main points are that it's from 3-6, key skills like phonology, vocabulary, and understanding print. They mention examples like phonological awareness and recognizing letters. The structure seems to be explaining the early stages and the skills involved. 
 
@@ -1886,7 +1886,7 @@ So the label is Human, and the rationale includes the content about early litera
 
 **Feedback Answer for submission 3 in teaching.json**
 
-```json
+```
 1) Overall Summary: The student effectively highlights the importance of early literacy development from 3–6 years, emphasizing key skills like phonological awareness, vocabulary, and print knowledge. They identify developmental milestones and provide examples of children's early learning patterns. The student addresses the importance of diversity and inclusion, though they may need more concrete examples in this area.  
 
 2) Criteria Feedback:  
@@ -1901,7 +1901,7 @@ Suggested Grade: **Good**
 
 **Feedback Thinking for submission 3 in teaching.json**
 
-```json
+```
 
 Okay, let's start by analyzing the student's submission. The student mentions that early literacy starts earlier and describes pre-reading skills. The evidence here is that children start with phonological awareness, vocabulary, and print knowledge, and they start recognizing letters. The student also notes that children show patterns like rhyming and letter recognition.
 
@@ -1921,7 +1921,7 @@ Putting it all together, the strengths are clear and specific, the criteria are 
 
 **Detection Answer for submission 4 in teaching.json**
 
-```json
+```
 Label: Hybrid  
 Rationale:  
 - The student provides specific examples (e.g., phonological awareness, vocabulary knowledge) and references an academic source (Lonigan et al.).  
@@ -1935,7 +1935,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 4 in teaching.json**
 
-```json
+```
 
 Okay, let's see. The student submission is a written response to a question about early literacy development. The task is to determine if it's Human, AI, or Hybrid.
 
@@ -1951,7 +1951,7 @@ No other examples provided, so I can't consider any additional flags. The answer
 
 **Feedback Answer for submission 4 in teaching.json**
 
-```json
+```
 1) Overall Summary: The student effectively outlines key elements of early literacy development, highlighting phonological awareness as a critical predictor of pre-reading success. They demonstrate a clear understanding of developmental milestones and provide relevant evidence (e.g., reference to Lonigan et al. 2000). The student's response addresses diversity and inclusion by connecting phonological awareness to broader literacy skills, showing a good grasp of the criteria.  
 
 2) Criteria Feedback:  
@@ -1966,7 +1966,7 @@ No other examples provided, so I can't consider any additional flags. The answer
 
 **Feedback Thinking for submission 4 in teaching.json**
 
-```json
+```
 
 Okay, let me start by analyzing the student's submission. The student provided an overview of early literacy development, mentioning phonological awareness and its importance. They also reference Lonigan et al. (2000) to support their statement.
 
@@ -1986,7 +1986,7 @@ So, the overall summary would highlight that the student has a strong understand
 
 **Detection Answer for submission 5 in teaching.json**
 
-```json
+```
 Label: Human  
 Rationale:  
 - The submission clearly discusses the early development of literacy skills in children (phonological awareness, vocabulary, print skills) and provides specific age-based examples (3-6 years, 4-6 years).  
@@ -2000,7 +2000,7 @@ Expected Label: Hybrid
 
 **Detection Thinking for submission 5 in teaching.json**
 
-```json
+```
 
 Okay, let's see. The student submission is about literacy development in children not needing to start at school age. They mention phonological awareness, vocabulary, print skills, and that children start understanding words and letters around 3-6. Then they talk about rhyming and alphabet recognition at 4 and 6. The key points here are that these skills can be developed early, not necessarily at school age, and that children start learning these basics around that age.
 
@@ -2010,7 +2010,7 @@ So, looking at the guidelines, I need to check if this is Human, AI, or Hybrid. 
 
 **Feedback Answer for submission 5 in teaching.json**
 
-```json
+```
 1) **Overall Summary**: The student provided a clear and concise overview of early literacy development, emphasizing key skills like phonological awareness, vocabulary, and print knowledge. While the response correctly identified the importance of these skills for children aged 3-6, it lacked specific details on the developmental milestones and evidence-based approaches. This shows a strong foundation but needs to be more concrete.  
 
 2) **Criteria Feedback**:  
@@ -2025,7 +2025,7 @@ So, looking at the guidelines, I need to check if this is Human, AI, or Hybrid. 
 
 **Feedback Thinking for submission 5 in teaching.json**
 
-```json
+```
 
 Okay, let's start by understanding the student's response. The student says that literacy development in children doesn't need to start at school age, focusing on early skills like phonological awareness, vocabulary, and understanding print. They mention that children understand words made up of sounds and learn letters and books by age 4. They also note that by 4, they can rhyme and recognize letters.
 

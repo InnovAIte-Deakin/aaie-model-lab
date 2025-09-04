@@ -451,10 +451,10 @@ def main():
 
                 output_md += f"### Results for submission {i} in {filename}\n\n"
                 output_md += f"**Detection Answer for submission {i} in {filename}**\n\n"
-                output_md += f"```json\n{detection_answer}\n```\n\n"
+                output_md += f"```\n{detection_answer}\n```\n\n"
                 output_md += f"Expected Label: {submission_label}\n\n"
                 output_md += f"**Detection Thinking for submission {i} in {filename}**\n\n"
-                output_md += f"```json\n{detection_thinking}\n```\n\n"
+                output_md += f"```\n{detection_thinking}\n```\n\n"
 
                 logger.info(f"Building feedback prompt for submission {i} in {filename}")
                 feedback_messages = build_feedback_prompt(
@@ -469,9 +469,9 @@ def main():
                 feedback_answer, feedback_thinking = extract_assistant_answer(feedback_response)
 
                 output_md += f"**Feedback Answer for submission {i} in {filename}**\n\n"
-                output_md += f"```json\n{feedback_answer}\n```\n\n"
+                output_md += f"```\n{feedback_answer}\n```\n\n"
                 output_md += f"**Feedback Thinking for submission {i} in {filename}**\n\n"
-                output_md += f"```json\n{feedback_thinking}\n```\n\n"
+                output_md += f"```\n{feedback_thinking}\n```\n\n"
 
                 end_time = time.time()
         total_time = end_time - start_time
