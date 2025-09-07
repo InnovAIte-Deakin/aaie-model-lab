@@ -138,8 +138,8 @@ def parse_ai_detection_result(generated_text: str):
 import os
 from openai import AzureOpenAI
 
-subcription_key = "3DiA7mZmkQWIaj543ZTZkbkaSAwz73q4Rtr2Z96N2g9B92qrwsFTJQQJ99BIACHYHv6XJ3w3AAAAACOGPQGC"
-endpoint = "https://s2231-mf9l12im-eastus2.cognitiveservices.azure.com/"
+subcription_key = 
+endpoint = 
 model_name = "gpt-4.1"
 deployment = "gpt-4.1"
 client = AzureOpenAI(
