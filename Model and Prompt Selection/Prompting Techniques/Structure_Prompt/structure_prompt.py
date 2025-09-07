@@ -3,17 +3,21 @@ import torch
 import json
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+
+# %% [markdown]
+# # Build the dection prompt
 
 # %%
 from typing import List, Dict, Any
 
-def build_detection_prompt(submission: str, domain: str):
+def build_detection_prompt(submission: str):
     """
     Build a structured prompt for classifying submissions as Human, AI, or Hybrid.
     """
-    role = f'You are an impartial AI text detector evaluating in {domain} whether a given text is AI- or human-generated or Hybrid.'
+    role = f'You are an impartial AI text detector evaluating whether a given text is AI- or human-generated or Hybrid.'
     task = 'Classify the text and provide reasoning for your decision.”'   
     step =  """
     Step 1: Analyze the text’s linguistic patterns and style. 
@@ -21,73 +25,44 @@ def build_detection_prompt(submission: str, domain: str):
     Step 3: Determine the label (AI-generated or human-written). 
     Step 4: Provide reasoning"""
 
-    with open(f"/kaggle/input/training-data-subject/Training Data/{domain}.json", "r") as file:
-        data = json.load(file)
-    # Few-shot examples block
-    examples_block = []
-    for s in data['submissions']:
-        examples_block.append(f'Submission: {s.get("final_submission","")}label: {s.get("label_type")}\n' )
-
     system_prompt = f"""
     {role}
     Your task is to {task}
     Following the {step}
-   
-    Given the examples:
-    {examples_block}
 
     Take the input:
         - 'Submission' which is submission.
-    Then output these following:
-        - label: AI, Human or Hybird
-        - Reasoning:
-            - First reason why it is the predicted label.
-            - Second reason why it is the predicted label.
+    Then output in this exact format (JSON-like):
+        {{
+            "label": "AI" | "Human" | "Hybrid",
+            "reasoning": ["first reason", "second reason"]
+        }}
     """
 
-    user_prompt = 'This the submission {submission}. Base on that provided me result'
+    user_prompt = f'This the submission {submission}. Base on that provided me result'
     return [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt},
     ]
 
 
+# %% [markdown]
+# # Build the feedback generative prompt
+
 # %%
-def build_feedback_prompt(domain: str, submission: str) -> List[Dict[str, str]]:
+def build_feedback_prompt(rubric: str, submission: str) -> List[Dict[str, str]]:
     """
     Build a structured prompt for rubric-aligned feedback generation.
     """
-    def format_rubric(rubric):
-      formatted_rubric = f"""
-      Rubric ID: {rubric['rubric_id']}
-    
-      Criteria:
-      """
-    
-      for rubric_item in rubric['criteria']:
-        formatted_rubric += f"""
-        Criterion: {rubric_item['criterion_id']}
-        Name: {rubric_item['name']}
-        Description: {rubric_item['description']}
-        Performance Descriptors:
-        """
-        for key, val in rubric_item['performance_descriptors'].items():
-          formatted_rubric += f"""
-          - {key}: {val}
-          """
-      return formatted_rubric
-    with open(f"/kaggle/input/training-data-subject/Training Data/{domain}.json", "r") as file:
-        data = json.load(file)
-    rubric = format_rubric(data['rubric'])
-    role = f"You are a helpful and respectful educational assessment assistant of {domain} that provides feedback on submitted work. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Provide assessment feedback and a rating for the assessment based on performce descriptors."
+    role = f"You are a helpful and respectful educational assessment assistant that provides feedback on submitted work. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Provide assessment feedback and a rating for the assessment based on performce descriptors."
     task = "Analyze the student’s response and generate detailed, actionable feedback"
     step = """
-    Summarize overall performance in 2-4 sentences.
+    Summarize overall performance in 2-4 sentences of the input submission.
+    Then provided the feedback based on the criterion
     For each rubric criterion:
     •	Identify rating (excellent to poor)
     •	Provide evidence from the submission (1-3 points)
     •	Give one concrete improvement tip
-
     """
     system = f"""
     {role} and your task is to {task}.
@@ -96,18 +71,41 @@ def build_feedback_prompt(domain: str, submission: str) -> List[Dict[str, str]]:
     Following the below step: {step}
     
     Take the input as a text submission of the task and provide the output as these following:
-        1) Overall Summary: 2–4 sentences on strengths and priorities.
-        2) Criteria Feedback: For each rubric criterion, include:
-           - Criterion
-           - Rating (excellent, good, average, needs_improvement, poor)
-           - Evidence (1–3 bullet points citing excerpts or behaviors)
-           - Improvement Tip (one concrete step)
+      1) Overall Summary: 2–4 sentences on strengths and priorities.
+      2) Criteria Feedback: For each rubric criterion, include:
+          - Criterion
+          - Rating (excellent, good, average, needs_improvement, poor)
+          - Evidence (1–3 bullet points citing excerpts or behaviors)
 """
     user = f"This is the submission of the student {submission} and provide the output"
     return [
         {"role": "system", "content": system},
         {"role": "user", "content": user},
     ]
+
+# %% [markdown]
+# ## Extract the rubric
+
+# %%
+def format_rubric(rubric):
+    formatted_rubric = f"""
+    Rubric ID: {rubric['rubric_id']}
+  
+    Criteria:
+    """
+  
+    for rubric_item in rubric['criteria']:
+      formatted_rubric += f"""
+      Criterion: {rubric_item['criterion_id']}
+      Name: {rubric_item['name']}
+      Description: {rubric_item['description']}
+      Performance Descriptors:
+      """
+      for key, val in rubric_item['performance_descriptors'].items():
+        formatted_rubric += f"""
+        - {key}: {val}
+        """
+    return formatted_rubric
 
 # %%
 from huggingface_hub import login
@@ -127,38 +125,132 @@ def generate_result(model, tokenizer, text, device = 'cuda'):
     return generated_text[len(prompt_text):].strip()
 
 # %%
-model_id = "mistralai/Mistral-7B-Instruct-v0.2"
-token = "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"
-login(token=token)
-    
-model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float16, device_map="auto")
-tokenizer = AutoTokenizer.from_pretrained(model_id)
+def parse_ai_detection_result(generated_text: str):
+    pred_json = json.loads(generated_text)
+    prediction = pred_json['label']
+    reasoning = pred_json['reasoning']
+    return prediction, reasoning
 
-
-# Example submission and rubric
-submission_human_it = """
-In network security, firewalls act as a barrier between a trusted internal network and untrusted external networks. 
-They filter incoming and outgoing traffic based on pre-defined rules. Additionally, intrusion detection systems (IDS) 
-monitor network traffic for suspicious activity and alert administrators. Combining firewalls with IDS enhances 
-overall network security by preventing unauthorized access and detecting potential threats.
-"""
-domain = 'it'
-
-# Run Academic Integrity Detector
-detector_prompt = build_detection_prompt(submission = submission_human_it, domain = 'it')
-detector_result = generate_result(model = model, tokenizer = tokenizer,text = detector_prompt)
-print("=== Academic Integrity Detection ===")
-print(detector_result)
-
-# Run Rubric-Aligned Feedback
-feedback_prompt = build_feedback_prompt(submission = submission_human_it, domain = 'it')
-feedback_result = generate_result(model = model, tokenizer = tokenizer,text = feedback_prompt)
-print("\n=== Rubric-Aligned Feedback ===")
-print(feedback_result)
-
+# %% [markdown]
+# # Load the model 
 
 # %%
+import os
+from openai import AzureOpenAI
 
+subcription_key = "3DiA7mZmkQWIaj543ZTZkbkaSAwz73q4Rtr2Z96N2g9B92qrwsFTJQQJ99BIACHYHv6XJ3w3AAAAACOGPQGC"
+endpoint = "https://s2231-mf9l12im-eastus2.cognitiveservices.azure.com/"
+model_name = "gpt-4.1"
+deployment = "gpt-4.1"
+client = AzureOpenAI(
+    api_version="2024-12-01-preview",
+    azure_endpoint= endpoint,
+    api_key= subcription_key,
+)
+
+
+def generated_response_openai(message):
+    response = client.chat.completions.create(
+    messages=message,
+    max_completion_tokens=13107,
+    temperature=1.0,
+    top_p=1.0,
+    frequency_penalty=0.0,
+    presence_penalty=0.0,
+    model=deployment
+)
+    return response.choices[0].message.content
+
+# %% [markdown]
+# # Run the model on the test dataset to get result.
+
+# %%
+domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+path = 'Training_Data/'
+
+os.makedirs('run/Detection_AI', exist_ok=True)
+os.makedirs('run/Feedback_Gen', exist_ok=True)
+
+#Go through different domain and its json file
+for domain in domains:
+    file = path + domain + '.json' #Create the json file
+    with open(file, 'r') as file:
+        data = json.load(file) #Get the data file
+
+    #Get the rubric of the domain
+    rubric = format_rubric(data['rubric'])
+
+    ai_results = []
+    gen_results = []
+    for s in tqdm(data["submissions"]):
+        text = s.get("final_submission", "")
+        label = s.get("label_type", "")
+        #build prompt for this submission
+        detector_prompt = build_detection_prompt(submission = text) #AI dection prompt
+        feedback_prompt = build_feedback_prompt(submission = text, rubric = rubric) #Feedback generation AI
+
+
+        # Run AI Detector and Feedback AI
+        ai_pred, _ = parse_ai_detection_result(generated_response_openai(message= detector_prompt))
+        feedback_result = generated_response_openai(message= feedback_prompt)
+
+        #Save the result
+        ai_results.append({ "text": text, "labels": label, "predictions": ai_pred})
+        gen_results.append({"text": text, "generated_text": feedback_result, "rubric": rubric})
+    #Save the result to CSV file
+    detection_df = pd.DataFrame(ai_results)
+    gen_df = pd.DataFrame(gen_results)
+    detection_df.to_csv(f"run/Detection_AI/{domain}.csv")
+    gen_df.to_csv(f'run/Feedback_Gen/{domain}.csv')
+    display(detection_df)
+    display(gen_df)
+
+# %% [markdown]
+# # Evaluate the performance of the model
+
+# %%
+from evaluate_model_genai import EvaluateModel
+
+
+domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+ai_path = 'run/Detection_AI'
+
+for domain in domains:
+    print(f"***************** {domain} *****************")
+    dataset_path = ai_path + '/' + domain + '.csv'
+    testset = pd.read_csv(  dataset_path)
+    evaluateModel = EvaluateModel(dataset = testset, model_type="ai_detection",device = "automap") #feedback_generation/ai_detection 
+    evaluateModel.evaluate_classification_model(print_result= True)
+    evaluateModel.construct_data_message() #Create the prompt for the dataset
+    for prompt in evaluateModel.dataset_prompt:
+        result = generated_response_openai(prompt)
+        try:
+            pred_json = json.loads(result)
+            print(f"confidence_level: {pred_json['confidence_level']}")
+        except:
+            print(result)
+
+# %%
+from evaluate_model_genai import EvaluateModel
+
+
+domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+ai_path = 'run/Feedback_Gen'
+
+for domain in domains:
+    print(f"***************** {domain} *****************")
+    dataset_path = ai_path + '/' + domain + '.csv'
+    testset = pd.read_csv(  dataset_path)
+    evaluateModel = EvaluateModel(dataset = testset, model_type="feedback_generation",device = "automap") #feedback_generation/ai_detection 
+    evaluateModel.evaluate_classification_model(print_result= True)
+    evaluateModel.construct_data_message() #Create the prompt for the dataset
+    for prompt in evaluateModel.dataset_prompt:
+        result = generated_response_openai(prompt)
+        try:
+            pred_json = json.loads(result)
+            print(f"Overall : {pred_json['Overall']}")
+        except:
+            print(result)
 
 # %%
 
