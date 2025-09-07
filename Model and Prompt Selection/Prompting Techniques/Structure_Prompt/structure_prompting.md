@@ -180,10 +180,11 @@ We focus to examine some example to keep of the model.
 | Psychology | 0.5000   |
 | Teaching   | 0.3333   |
 
+![AIDection](ai_dection.png)
 The confidence distribution reveals that participants were generally quite certain about their responses, with the vast majority (approximately 19 out of 28 responses) given at the highest confidence level of 5, while only a small fraction demonstrated low confidence. However, this high level of confidence did not translate uniformly into accuracy across all departments, suggesting a potential disconnect between perceived and actual performance.
 
 The departmental accuracy analysis shows significant variation in performance, with Accounting and IT departments achieving the highest accuracy rates at 66.67% each, followed by Engineering and Psychology at a moderate 50%, while the Teaching department lagged considerably behind at just 33.33%.
 
 #### ii. Feedback Generation
-
+![feedback_result](feedback_result.png)
 The figure shows the results produced by the GenAI model. Overall, the model achieved high scores, indicating it can be reliably reused. The lowest score was 3.83, while the highest reached 5.0. Most predictions clustered around 4.67, with approximately ten instances at this value, and three predictions achieved a perfect score of 5.0.
