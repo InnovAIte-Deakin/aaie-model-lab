@@ -3,3 +3,12 @@ Flask-CORS==4.0.0
 Werkzeug==2.3.7
 gunicorn==21.2.0
 python-dotenv==1.0.0
+
+# Hugging Face and ML dependencies
+torch>=2.0.0
+transformers>=4.35.0
+datasets>=2.14.0
+accelerate>=0.24.0
+sentencepiece>=0.1.99
+protobuf>=3.20.3
+numpy>=1.24.0

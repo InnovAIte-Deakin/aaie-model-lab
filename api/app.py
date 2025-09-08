@@ -4,6 +4,7 @@ import json
 import os
 from typing import Dict, Any
 import logging
+from hf_model_integration import create_hf_scorer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -11,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
+
+# Initialize HF model scorer
+HF_SCORER = None
 
 # Rubric categories and their possible labels
 RUBRIC_CATEGORIES = {
@@ -48,10 +52,31 @@ RUBRIC_CRITERIA = {
     }
 }
 
+def initialize_hf_model():
+    """Initialize the Hugging Face model"""
+    global HF_SCORER
+    
+    try:
+        model_type = os.environ.get('MODEL_TYPE', 'simple')
+        model_name = os.environ.get('MODEL_NAME', 'distilbert-base-uncased')
+        
+        logger.info(f"Initializing HF model: {model_name} (type: {model_type})")
+        HF_SCORER = create_hf_scorer(model_type, model_name)
+        
+        if HF_SCORER.load_model():
+            logger.info("HF model loaded successfully!")
+            return True
+        else:
+            logger.error("Failed to load HF model, falling back to mock evaluation")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Error initializing HF model: {str(e)}")
+        return False
+
 def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     """
-    Mock LLM evaluation function that returns rubric scores.
-    In a real implementation, this would call an actual LLM API.
+    LLM evaluation function that uses HF model or falls back to mock logic.
     
     Args:
         student_submission (str): The student's submission text
@@ -59,13 +84,22 @@ def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     Returns:
         Dict[str, str]: Dictionary with rubric category scores
     """
-    # This is a mock implementation (will replace with actual LLM API call)
-    # For now, it returns a simple evaluation based on text length and content
+    global HF_SCORER
     
+    # Try to use HF model if available
+    if HF_SCORER is not None:
+        try:
+            logger.info("Using HF model for evaluation")
+            return HF_SCORER.evaluate_submission(student_submission)
+        except Exception as e:
+            logger.error(f"HF model evaluation failed: {str(e)}, falling back to mock")
+    
+    # Fallback to mock implementation
+    logger.info("Using mock evaluation logic")
     text_length = len(student_submission)
     word_count = len(student_submission.split())
     
-    # Simple scoring logic (replace with actual LLM evaluation)
+    # Simple scoring logic (fallback)
     if word_count > 50 and "because" in student_submission.lower() and "economic" in student_submission.lower():
         structure = "Excellent"
         clarity = "Good"
@@ -195,5 +229,10 @@ def get_rubric_info():
     }), 200
 
 if __name__ == '__main__':
+    # Initialize HF model on startup
+    logger.info("Starting AAIE Rubric Scoring API...")
+    initialize_hf_model()
+    
     port = int(os.environ.get('PORT', 5001))  # Changed from 5000 to 5001
+    logger.info(f"Starting server on port {port}")
     app.run(host='0.0.0.0', port=port, debug=True)
