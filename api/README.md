@@ -10,8 +10,7 @@ api/
 ├── app.py                 # Main Flask application with API endpoints
 ├── requirements.txt       # Python dependencies
 ├── API_README.md         # Comprehensive API documentation
-├── test_app.py           # Unit tests for the API
-└── example_usage.py      # Example script showing how to use the API
+└── test_and_demo.py      # Combined unit tests and integration demo
 ```
 
 ## Quick Start
@@ -30,11 +29,12 @@ The server will start on `http://localhost:5000`
 
 ### 3. Test the API
 ```bash
-# Run unit tests
-python test_app.py
+# Run unit tests (no server needed)
+python test_and_demo.py
 
-# Run example usage
-python example_usage.py
+# Run integration tests (server must be running)
+python app.py &                    # Start server in background
+python test_and_demo.py --integration
 ```
 
 ## API Endpoints
@@ -59,8 +59,7 @@ Each category receives a score: **Excellent**, **Good**, **Fair**, or **Poor**.
 ## Documentation
 
 - **`API_README.md`** - Complete API documentation with examples
-- **`test_app.py`** - Comprehensive test suite
-- **`example_usage.py`** - Working examples in Python
+- **`test_and_demo.py`** - Combined unit tests and integration demo
 
 ## Current Implementation
 
@@ -98,7 +97,7 @@ The API includes comprehensive tests covering:
 - Edge cases
 - Response format validation
 
-Run tests with: `python test_app.py`
+Run tests with: `python test_and_demo.py`
 
 ---
 
