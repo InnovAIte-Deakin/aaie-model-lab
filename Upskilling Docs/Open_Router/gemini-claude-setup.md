@@ -22,7 +22,7 @@ preparation ensures that our project remains sustainable,
 cost-effective, and ready to leverage the latest commercial AI tools.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image1.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image1.png"
 style="width:6.5in;height:3.5625in" />
 
 - On this screen, click **Get API key**.
@@ -40,7 +40,7 @@ This key is what you’ll use later to access Gemini programmatically in
 your project.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image2.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image2.png"
 style="width:6.5in;height:3.0625in" />
 
 - Once you click “Get API key,” you’ll be taken to the Google AI Studio
@@ -64,7 +64,7 @@ style="width:6.5in;height:3.0625in" />
   this page to test that Gemini is working correctly.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image3.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image3.png"
 style="width:5.15625in;height:2.41667in" />
 
 - At this stage, the system asks you to select a Google Cloud project
@@ -83,7 +83,7 @@ style="width:5.15625in;height:2.41667in" />
   managed securely and tracked under your account.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image4.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image4.png"
 style="width:5.20833in;height:2.45833in" />
 
 - Here, the Google Cloud project named “Gemini API” is displayed and
@@ -101,8 +101,8 @@ style="width:5.20833in;height:2.45833in" />
 - This ensures that your key is tied to a valid project, making it
   easier to manage and track inside Google Cloud.
 
-![](D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image5.png)<img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image6.png"
+![](./Media/Claude_and_gemini_pics_run2/media/image5.png)<img
+src="./Media/Claude_and_gemini_pics_run2/media/image6.png"
 style="width:6.48958in;height:1.86458in" />
 
 - Once the project is selected, the system generates your API key.
@@ -121,7 +121,7 @@ style="width:6.48958in;height:1.86458in" />
   whenever you want to make requests to Gemini.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image7.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image7.png"
 style="width:6.48958in;height:3.69792in" />
 
 - After generating the key, it will now appear on the API Keys page
@@ -145,7 +145,7 @@ style="width:6.48958in;height:3.69792in" />
   you need them.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image8.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image8.png"
 style="width:4.41667in;height:1.78125in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -164,7 +164,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   limits to avoid any unexpected charges.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image9.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image9.png"
 style="width:6.5in;height:1.78194in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -184,7 +184,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   resources provided, making sure to stay within the usage limits.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image10.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image10.png"
 style="width:4.91667in;height:3.61458in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -204,7 +204,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   continue using Gemini under the free plan limits.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image11.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image11.png"
 style="width:4.72917in;height:3.89583in"
 alt="A screenshot of a credit card AI-generated content may be incorrect." />
 
@@ -226,7 +226,7 @@ cardholder name, then click Save card.
   card, you won’t be able to activate and use the Gemini API key.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image12.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image12.png"
 style="width:6.5in;height:3.47292in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -251,7 +251,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   unnecessary charges.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image13.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image13.png"
 style="width:6.5in;height:6.15903in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -270,7 +270,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   before moving forward.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image14.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image14.png"
 style="width:6.5in;height:4.18125in"
 alt="A screenshot of a computer screen AI-generated content may be incorrect." />
 
@@ -295,7 +295,7 @@ continue. This lets you start experimenting right away without any
 payment.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image15.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image15.png"
 style="width:6.5in;height:2.14653in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -314,7 +314,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   project.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image16.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image16.png"
 style="width:6.5in;height:3.06528in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -338,7 +338,7 @@ process in your project. This makes the Claude workspace both a testing
 ground and a reference point for developing structured prompts.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image17.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image17.png"
 style="width:6.5in;height:3.16736in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -370,7 +370,7 @@ this template and adding your own prompts inside the messages list, you
 can start integrating Claude into your projects right away.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image18.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image18.png"
 style="width:6.45833in;height:8.08333in"
 alt="A screenshot of a credit card AI-generated content may be incorrect." />
 
@@ -394,7 +394,7 @@ alt="A screenshot of a credit card AI-generated content may be incorrect." />
   within the no-cost requirement.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image19.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image19.png"
 style="width:6.5in;height:3.07639in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -423,7 +423,7 @@ alt="A screenshot of a computer AI-generated content may be incorrect." />
   premium models without paying upfront.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image20.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image20.png"
 style="width:6.5in;height:4.6in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -454,7 +454,7 @@ snippets and integration details needed to start using Claude through
 OpenRouter.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image21.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image21.png"
 style="width:6.5in;height:4.51806in"
 alt="A screenshot of a chat AI-generated content may be incorrect." />
 
@@ -478,7 +478,7 @@ to make requests to Claude 3 Haiku (and other models supported by
 OpenRouter) without needing to set up billing directly with Anthropic.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image22.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image22.png"
 style="width:6.5in;height:2.62292in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
@@ -493,7 +493,7 @@ into code that might be uploaded online. With this key, you can now
 start making API calls to different models directly from your project.
 
 <img
-src="D:\MyProjects\claude and gemini doc\aaie-model-lab-1\Upskilling Docs\Open_Router\Media\Claude_and_gemini_pics_run2/media/image23.png"
+src="./Media/Claude_and_gemini_pics_run2/media/image23.png"
 style="width:4.9375in;height:3.70833in"
 alt="A screenshot of a computer AI-generated content may be incorrect." />
 
