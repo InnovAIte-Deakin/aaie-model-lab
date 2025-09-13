@@ -25,7 +25,7 @@ We evaluated 10 models using the same datasets (Teaching, Psychology, IT, Engine
 •	Observability: Metrics (accuracy, latency, error rate), tracing, dataset drift alerts, reviewer dashboards; red flag queue for human moderation.
 
 ### Deployment options
-•	Managed (recommended for primary): Exploring Azure AI, OpenRouter, Ollama, LMStudio, Docker and Local deployment options.  
+•	Managed (recommended for primary): Exploring Azure AI, OpenRouter, Ollama, LMStudio, Docker and Local deployment options. Currently, Gemini 1.5 Pro for both detection and feedback (free tier).
 •	Self hosted (optional second tier): Containerised open models (DeepSeek R1, Mistral, Gemma, Qwen, TinyLLaMA, Phi 2) behind a GPU autoscaling pool; batch mode only where slow.  
 •	Cost controls: Per domain routing, caching of stable feedback, batch overnight jobs for heavy/slow models, usage quotas.
 
@@ -116,23 +116,37 @@ Scales used:
 
 *Detection figure reported from run log; treat cautiously until re scored against ground truth.
 
-## Final Recommendations to begin Phase 2
-### AI Detection (Human/AI/Hybrid)
-•	Primary: GPT 4.1 — best observed accuracy and stability across domains. Actions:  
-o	Add confidence thresholds; route low confidence or borderline Hybrid cases to DeepSeek R1 for a second opinion.  
-o	Maintain human review for red flags; never auto penalise based on a single model.  
+## Final Recommendations for Phase 2  
 
-•	Secondary / Ensemble: DeepSeek R1 — provide supportive signals on ambiguous cases, batch re checks, and moderator dashboards.
+### AI Detection  
+- **Primary:** **Gemini 1.5 Pro** – chosen for free availability, acceptable accuracy, and stable API.  
+- **Fallback:** *Not implemented in Phase 2*; will add DeepSeek R1 as ensemble fallback next trimester.  
 
-### Feedback Generation
-•	Primary: GPT 4.1 — consistently clear, rubric aligned, supportive tone.  
-o	Prompt upgrades: require two domain specific mini examples per weak criterion; include First steps this week / Longer term steps fields; enforce max length per section; discourage vague verbs (“add detail”).  
+### Feedback Generation  
+- **Primary:** **Gemini 1.5 Pro** – strong rubric alignment, clear structure, and supportive tone.  
+- **Prompt Upgrades:**  
+  - Require two mini-examples per weak criterion.  
+  - Include “First steps this week” and “Longer term steps” fields.  
+  - Enforce max length per section.  
+  - Discourage vague verbs (e.g. “add detail”).  
+- **Fallback:** *Not implemented in Phase 2*; Mistral 7B will be explored as batch fallback in future.
 
-•	Secondary: Gemini 1.5 Pro — strong GenAI score; run a labelled re evaluation to confirm.  
+## Rationale for This Approach  
+- **Cost-effective:** Gemini’s free tier removes Azure’s 30-day GPT 4.1 constraint.  
+- **Simplified for MVP:** Single-model routing reduces engineering complexity for Phase 2.  
+- **Future-ready:** Leaves room to add fallback/ensemble models in the next trimester (DeepSeek for classification, Mistral for feedback).  
+- **Auditability:** Structured rationales and logs maintained for staff review.  
+- **Scalable:** Easy to extend with model routing once open-source inference infra is stable.
 
-•	Optional batch models: Mistral 7B (with strict templates) or Gemma (if latency is acceptable overnight). 
+## Why GPT 4.1 Was Rejected for Phase 2  
 
-### Explanation behind this approach
-•	Maximises reliability (GPT 4.1 primary + DS R1 ensemble) without locking us to a single vendor for feedback (Gemini secondary).  
-•	Preserves auditability (stored rationales in staff view, structured outputs, confidence + flags).  
-•	Balances cost & latency (managed service for interactive; self hosted open models only as batch/fallback).
+While GPT 4.1 produced the **highest accuracy (87%)** and well-structured feedback, it was rejected as the Phase 2 primary model for the following reasons:  
+
+- **Licensing Constraint:** GPT 4.1 access is only available through a **30-day Azure trial**, which is not sustainable for ongoing production use.  
+- **Cost Considerations:** Paid Azure consumption would introduce a recurring cost per request, making it difficult to control budgets during pilot rollout.  
+- **Vendor Lock-in Risk:** Relying on a single, paid vendor this early would hinder flexibility to pivot to open or hybrid setups later.  
+- **Gemini Availability:** Gemini 1.5 Pro is currently free, provides competitive quality for feedback generation, and sufficient accuracy for detection with prompt tuning.  
+- **Simplicity for MVP:** Using Gemini as the single primary model reduces engineering overhead (no trial account rotation, no Azure quota management).  
+
+**Conclusion:** GPT 4.1 will remain a **secondary model** and may be reconsidered if free or academic access becomes available in future phases.
+
