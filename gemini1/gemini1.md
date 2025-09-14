@@ -93,17 +93,17 @@ MODEL = "gemini-1.5-flash"
 
    1. *AI Detection Output:*
 
-      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect1.png" alt="AI Detection Output 1 image" width="300">
+      <img src="https://vscode.dev/github/vvanhieu/aaie-model-lab-2/blob/gemini1.5_prompting/gemini1/AI_detect1.png" alt="AI Detection Output 1 image" width="300">
 
-      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect2.png" alt="AI Detection Output 2 image" width="300">
+      <img src="https://vscode.dev/github/vvanhieu/aaie-model-lab-2/blob/gemini1.5_prompting/gemini1/AI_detect2.pngt2.png" alt="AI Detection Output 2 image" width="300">
 
-      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect3.png" alt="AI Detection Output 3 image" width="300">
+      <img src="https://vscode.dev/github/vvanhieu/aaie-model-lab-2/blob/gemini1.5_prompting/gemini1/AI_detect3.pngt3.png" alt="AI Detection Output 3 image" width="300">
 
    1. *Feedback AI Generation Output:* 
 
-      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/Feedback1.png" alt="Feedback Generation Output 1 image" width="300">
+      <img src="https://vscode.dev/github/vvanhieu/aaie-model-lab-2/blob/gemini1.5_prompting/gemini1/Feedback1.pngk1.png" alt="Feedback Generation Output 1 image" width="300">
 
-      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/Feedback2.png" alt="Feedback Generation Output 2 image" width="300">
+      <img src="https://vscode.dev/github/vvanhieu/aaie-model-lab-2/blob/gemini1.5_prompting/gemini1/Feedback2.png" alt="Feedback Generation Output 2 image" width="300">
 
 
 1. **Observation**
