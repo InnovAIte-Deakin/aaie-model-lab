@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import google.generativeai as genai
 
 
 # %% [markdown]
@@ -32,18 +33,19 @@ def build_detection_prompt(submission: str):
 
     Take the input:
         - 'Submission' which is submission.
-    Then output in this exact format (JSON-like):
+        
+    Then output in this exact format (JSON):
         {{
-            "label": "AI" | "Human" | "Hybrid",
+            "label": "AI" or "Human" or "Hybrid",
             "reasoning": ["first reason", "second reason"]
         }}
+    
     """
 
     user_prompt = f'This the submission {submission}. Base on that provided me result'
-    return [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_prompt},
-    ]
+    return {
+        "system": system_prompt,
+        "user": user_prompt}
 
 
 # %% [markdown]
@@ -66,8 +68,7 @@ def build_feedback_prompt(rubric: str, submission: str) -> List[Dict[str, str]]:
     """
     system = f"""
     {role} and your task is to {task}.
-    Given the rubric of task is:
-    {rubric}
+    
     Following the below step: {step}
     
     Take the input as a text submission of the task and provide the output as these following:
@@ -78,10 +79,9 @@ def build_feedback_prompt(rubric: str, submission: str) -> List[Dict[str, str]]:
           - Evidence (1–3 bullet points citing excerpts or behaviors)
 """
     user = f"This is the submission of the student {submission} and provide the output"
-    return [
-        {"role": "system", "content": system},
-        {"role": "user", "content": user},
-    ]
+    return {
+        "system": system,
+        "user": user}
 
 # %% [markdown]
 # ## Extract the rubric
@@ -125,47 +125,52 @@ def generate_result(model, tokenizer, text, device = 'cuda'):
     return generated_text[len(prompt_text):].strip()
 
 # %%
+import json
+import re
+
 def parse_ai_detection_result(generated_text: str):
-    pred_json = json.loads(generated_text)
+
+    # Remove markdown-style code fences if present
+    cleaned = re.sub(r"^```json|^```|```$", "", generated_text.strip(), flags=re.MULTILINE).strip()
+
+    # Try to load as JSON
+    try:
+        pred_json = json.loads(cleaned)
+    except json.JSONDecodeError:
+        # Fallback: extract first JSON object found in text
+        match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+        if not match:
+            raise ValueError("No valid JSON object found in response")
+        pred_json = json.loads(match.group())
+
     prediction = pred_json['label']
     reasoning = pred_json['reasoning']
     return prediction, reasoning
+
 
 # %% [markdown]
 # # Load the model 
 
 # %%
 import os
-from openai import AzureOpenAI
 
-subcription_key = 
-endpoint = 
-model_name = "gpt-4.1"
-deployment = "gpt-4.1"
-client = AzureOpenAI(
-    api_version="2024-12-01-preview",
-    azure_endpoint= endpoint,
-    api_key= subcription_key,
-)
+# Set your API key (from Google AI Studio / Cloud console)
+genai.configure(api_key="")
+
+# Choose model: "gemini-1.5-pro" or "gemini-1.5-flash"
 
 
-def generated_response_openai(message):
-    response = client.chat.completions.create(
-    messages=message,
-    max_completion_tokens=13107,
-    temperature=1.0,
-    top_p=1.0,
-    frequency_penalty=0.0,
-    presence_penalty=0.0,
-    model=deployment
-)
-    return response.choices[0].message.content
+def generated_response_gemini(message):
+    model = genai.GenerativeModel("gemini-1.5-flash",system_instruction= message['system'])
+    chat = model.start_chat()
+    response = chat.send_message(message['user'])
+    return response.text
 
 # %% [markdown]
 # # Run the model on the test dataset to get result.
 
 # %%
-domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+domains = ['engineering', 'it','psychology', 'teaching'] #'engineering', 'it','psychology', 'teaching', 'accounting'
 path = 'Training_Data/'
 
 os.makedirs('run/Detection_AI', exist_ok=True)
@@ -191,12 +196,13 @@ for domain in domains:
 
 
         # Run AI Detector and Feedback AI
-        ai_pred, _ = parse_ai_detection_result(generated_response_openai(message= detector_prompt))
-        feedback_result = generated_response_openai(message= feedback_prompt)
+        ai_pred, _ = parse_ai_detection_result(generated_response_gemini(message= detector_prompt))
+        feedback_result = generated_response_gemini(message= feedback_prompt)
 
         #Save the result
         ai_results.append({ "text": text, "labels": label, "predictions": ai_pred})
         gen_results.append({"text": text, "generated_text": feedback_result, "rubric": rubric})
+    print("Saving to file")
     #Save the result to CSV file
     detection_df = pd.DataFrame(ai_results)
     gen_df = pd.DataFrame(gen_results)
@@ -211,46 +217,79 @@ for domain in domains:
 # %%
 from evaluate_model_genai import EvaluateModel
 
-
-domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+domains = ['teaching'] #'engineering', 'it','psychology', 'teaching', 'accounting'
 ai_path = 'run/Detection_AI'
+store_path = 'save/Detection_AI'
+os.makedirs(store_path, exist_ok=True)
 
 for domain in domains:
     print(f"***************** {domain} *****************")
     dataset_path = ai_path + '/' + domain + '.csv'
-    testset = pd.read_csv(  dataset_path)
-    evaluateModel = EvaluateModel(dataset = testset, model_type="ai_detection",device = "automap") #feedback_generation/ai_detection 
-    evaluateModel.evaluate_classification_model(print_result= True)
-    evaluateModel.construct_data_message() #Create the prompt for the dataset
-    for prompt in evaluateModel.dataset_prompt:
-        result = generated_response_openai(prompt)
-        try:
-            pred_json = json.loads(result)
-            print(f"confidence_level: {pred_json['confidence_level']}")
-        except:
-            print(result)
+    testset = pd.read_csv(dataset_path)
+    
+    evaluateModel = EvaluateModel(
+        dataset=testset,
+        model_type="ai_detection",
+        device="automap"   # feedback_generation/ai_detection
+    )
+    
+    evaluateModel.evaluate_classification_model(print_result=True)
+    evaluateModel.construct_data_message()  # Create the prompt for the dataset
+
+    output_file = os.path.join(store_path, f"{domain}_results.txt")
+    with open(output_file, "w", encoding="utf-8") as f:
+        for prompt in evaluateModel.dataset_prompt:
+            result = generated_response_gemini(prompt)
+            try:
+                pred_json = json.loads(result)
+                confidence = pred_json.get("confidence_level", "N/A")
+                f.write(json.dumps(pred_json, ensure_ascii=False) + "\n")
+                print(f"confidence_level: {confidence}")
+            except:
+                # Store raw text if JSON parsing fails
+                f.write(result.strip() + "\n")
+                print(result)
+    
+    print(f"Results saved to {output_file}")
+
+
 
 # %%
+import pandas as pd
+import json
+
 from evaluate_model_genai import EvaluateModel
 
-
-domains = ['accounting', 'engineering', 'it','psychology', 'teaching']
+domains = ['psychology', 'teaching']
 ai_path = 'run/Feedback_Gen'
 
 for domain in domains:
     print(f"***************** {domain} *****************")
     dataset_path = ai_path + '/' + domain + '.csv'
-    testset = pd.read_csv(  dataset_path)
-    evaluateModel = EvaluateModel(dataset = testset, model_type="feedback_generation",device = "automap") #feedback_generation/ai_detection 
-    evaluateModel.evaluate_classification_model(print_result= True)
-    evaluateModel.construct_data_message() #Create the prompt for the dataset
-    for prompt in evaluateModel.dataset_prompt:
-        result = generated_response_openai(prompt)
-        try:
-            pred_json = json.loads(result)
-            print(f"Overall : {pred_json['Overall']}")
-        except:
-            print(result)
+    testset = pd.read_csv(dataset_path)
+
+    evaluateModel = EvaluateModel(
+        dataset=testset, 
+        model_type="feedback_generation",  # or "ai_detection"
+        device="automap"
+    )
+    evaluateModel.construct_data_message()  # Create the prompt for the dataset
+
+    # open plain text file for saving results
+    output_file = f"results_{domain}.txt"
+    with open(output_file, "w", encoding="utf-8") as f:
+        for prompt in evaluateModel.dataset_prompt:
+            result = generated_response_gemini(prompt)
+            try:
+                pred_json = json.loads(result)
+                line = f"Overall: {pred_json.get('Overall', 'N/A')}\n"
+            except Exception:
+                # if not valid JSON, just dump raw result
+                line = result.strip() + "\n"
+
+            print(line.strip())
+            f.write(line)
+
 
 # %%
 
