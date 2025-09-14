@@ -57,3 +57,5 @@
 | 4 | 5 | 5 | 5 | 4 | 4 (Good) |
 | 5 | 5 | 5 | 5 | 4 | 4 (Good) |
 | 6 | 5 | 5 | 4 | 4 | 4 (Good) |
+
+[Ratings with human criteria](ratings%20with%20human%20criteria.png)
