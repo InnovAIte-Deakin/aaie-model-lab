@@ -1,4 +1,4 @@
-﻿SIT378 – Project B
+SIT378 – Project B
 
 Project name: AAIE – LLM Prototyping and Training
 
@@ -24,8 +24,10 @@ The experiment was conducted with a set of test prompts and student-like submiss
 - Evaluation Strategy: Each prompt was submitted to the model. The generated outputs were analyzed along two dimensions:
 1) AI Detection Quality: clarity of evaluation, reasoning, and recommendations for further investigation.
 1) Feedback Quality: clarity, rubric alignment, and actionability of suggestions.
-- Additionally, each output was extended with a criteria-based analysis, including:
-- Confidence Level (%)
+
+   1. AI Detection Criteria
+
+- The model's classifications (Human / AI / Hybrid) were checked against markers such as:
 - Repetition
 - Lexical Diversity
 - Sentence Structure Diversity
@@ -34,6 +36,18 @@ The experiment was conducted with a set of test prompts and student-like submiss
 - Emotional Expressiveness
 - Coherence & Natural Transitions
 - Pronouns & Contextual Appropriateness
+- Output Assessment: Each prediction was marked Correct or Incorrect and given a short explanation with confidence score in percentage.
+
+  1. Feedback Evaluation Criteria:
+
+- Feedback quality was scored on a 1–5 scale using six dimensions:
+- Correctness – accurate, helpful
+- Clarity – easy to understand
+- Tone – supportive, constructive
+- Actionability – clear next steps
+- Coherence – logical flow
+- Emotion – empathetic, sensitive
+- Output Assessment: Each feedback was scored across criteria, averaged, and explained briefly.
 
 1. **Implementation**
 
@@ -55,13 +69,9 @@ The experiment was conducted with a set of test prompts and student-like submiss
 
   1. Gemini 1.5 flash model Set-up:
 
-API\_KEY = "AIzaSyBwVZ9ABILNzNixnXFb0TgbrI90r7BEH1g"
+genai.configure(api\_key="AIzaSyBwVZ9ABILNzNixnXFb0TgbrI90r7BEH1g")  
 
 MODEL = "gemini-1.5-flash"
-
-URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
-
-
 
 1. *Role-Based Prompting:*
 
@@ -81,29 +91,41 @@ URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generate
 
 1. **The Result**
 
-   ![](Aspose.Words.dacac0b8-64ef-4e69-aa17-91bc1227534f.001.png)
+   1. *AI Detection Output:*
 
-   ![](Aspose.Words.dacac0b8-64ef-4e69-aa17-91bc1227534f.002.png)
+      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect1.png" alt="AI Detection Output 1 image" width="300">
 
-   ![](Aspose.Words.dacac0b8-64ef-4e69-aa17-91bc1227534f.003.png)
+      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect2.png" alt="AI Detection Output 2 image" width="300">
 
-   ![](Aspose.Words.dacac0b8-64ef-4e69-aa17-91bc1227534f.004.png)
+      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/AI_detect3.png" alt="AI Detection Output 3 image" width="300">
 
-   ![](Aspose.Words.dacac0b8-64ef-4e69-aa17-91bc1227534f.005.png)
+   1. *Feedback AI Generation Output:* 
+
+      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/Feedback1.png" alt="Feedback Generation Output 1 image" width="300">
+
+      <img src="/Users/kew/Documents/Trimester 1 2025/SIT375 Project B/gemini/Feedback2.png" alt="Feedback Generation Output 2 image" width="300">
 
 
 1. **Observation**
 
-- **Structured Output:** Each response contained clear sections such as Detection Result / Confidence Level, Justification, Recommendations, and Conclusion. This consistency demonstrates that Gemini 1.5 Flash is reliable in following role-based prompts (such as academic integrity evaluator, supportive assessor).
-- **Handling of Academic Integrity Detection:**
-- The model effectively identified red flags such as overly generic phrasing, lack of specificity, or direct admissions of AI usage.
-- It consistently recommended multi-step verification: plagiarism checks, stylistic analysis, and student interviews.
-- Confidence levels were provided, which gave a probabilistic feel to the evaluation.
-- **Feedback on Academic Writing:**
-- The model provided rubric-aligned feedback directly mapped to Clarity, Evidence, Critical Thinking, Writing Quality.
-- The feedback tone was supportive and constructive, making it appropriate for real educational settings.
+- **Structured Output:** Each response contained clear sections (Detection Result, Confidence Level, Justification, Recommendations). The model reliably followed the role-based prompting.
+- **AI Detection:**
+- Output Structure (AI Detection):
+- Result: Correct / Incorrect (based on comparison of label vs. prediction).
+- Criteria-based Analysis: Detailed reasoning using the markers above.
+- Confidence Level: Probability estimate (%) of correct classification.
+- Correctly flagged AI-like phrasing and admissions of hybrid use.
+- Provided probabilistic confidence levels.
+- Recommended verification methods (plagiarism checks, stylistic analysis).
+- **Feedback Generation:**
+- Output Structure (Feedback Evaluation):
+- Criterion Scores: Each scored 1–5.
+- Overall Rating: Average of scores (or adjusted in edge cases).
+- Reasoning: Written justification for each score with references to text.
+- Rubric-aligned, constructive, supportive.
+- Direct mapping to clarity, evidence, critical thinking, and writing quality.
 - **Language and Style:**
-- The generated text was grammatically correct, coherent, and professional.
-- Tone remained neutral to supportive, avoiding harsh or accusatory language.
+- Professional, coherent, and grammatically sound.
+- Tone supportive, avoiding harsh or accusatory framing.
 
 
