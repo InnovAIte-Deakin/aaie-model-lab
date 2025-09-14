@@ -1,129 +1,114 @@
 import json
-import requests
-import os
-import random  
+import google.generativeai as genai
 
-# ------------------------
-# Gemini API Setup
-# ------------------------
-API_KEY = "AIzaSyBwVZ9ABILNzNixnXFb0TgbrI90r7BEH1g"
+# Configure Gemini
+genai.configure(api_key="AIzaSyBwVZ9ABILNzNixnXFb0TgbrI90r7BEH1g")  
+
 MODEL = "gemini-1.5-flash"
-URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
-HEADERS = {
-    "Content-Type": "application/json",
-    "X-goog-api-key": API_KEY
-}
+# ---------------------------
+# Rubrics for evaluation
+# ---------------------------
 
-# ------------------------
-# Run AI Detection Prompt
-# ------------------------
-def run_ai_detection(prompt_text: str) -> dict:
-    """Call Gemini API and return text output as string."""
-    payload = {
-        "contents": [
-            {"parts": [{"text": prompt_text}]}
-        ]
-    }
+FEEDBACK_CRITERIA = """
+You are an evaluator. Evaluate the given feedback against these criteria:
 
-    try:
-        response = requests.post(URL, headers=HEADERS, json=payload)
-        response.raise_for_status()
-        data = response.json()
+1. Correctness (Accuracy & Helpfulness) -- 1 to 5
+2. Clarity (Understandability & Communication) -- 1 to 5
+3. Tone (Supportiveness & Constructiveness) -- 1 to 5
+4. Actionability (Clear Next Steps & Implementation) -- 1 to 5
+5. Coherence (Consistency & Flow) -- 1 to 5
+6. Emotion (Emotional Intelligence & Sensitivity) -- 1 to 5
 
-        candidates = data.get("candidates", [])
-        if candidates:
-            parts = candidates[0].get("content", {}).get("parts", [])
-            if parts:
-                return {
-                    "text": "\n".join(part.get("text", "").strip() for part in parts if part.get("text"))
-                }
+Output structure:
+- Criterion Scores (each 1–5)
+- Overall Rating (average or adjusted in exceptional cases)
+- Reasoning (justification for each score with references to text)
+"""
 
-        return {"text": "⚠️ No text found in model response."}
+AI_DETECTION_CRITERIA = """
+You are an evaluator. Compare model prediction with actual label using these criteria:
 
-    except requests.exceptions.HTTPError as e:
-        return {"text": f"⚠️ HTTP Error: {e}"}
-    except Exception as e:
-        return {"text": f"⚠️ Unexpected Error: {e}"}
+Repetition, Lexical Diversity, Sentence Structure Diversity, Grammar, Content Specificity,
+Emotional Expressiveness, Coherence & Natural Transitions, Pronouns, Contextual Appropriateness.
 
-# ------------------------
-# Generate Criteria-based Analysis
-# ------------------------
-def generate_analysis(text: str) -> dict:
-    """
-    Assign a mock Confidence_Level (0-100%) and generate example criteria-based analysis.
-    In a real setup, you would use NLP metrics or the model output to calculate these.
-    """
-    # Mock confidence based on heuristics or random (replace with real AI detection logic)
-    confidence = random.randint(60, 95)  # Example: 75% confidence the text is AI-generated
+Input structure:
+- Text: input text
+- Label: actual label (AI/Human)
+- Prediction: model prediction (AI/Human)
 
-    # criteria-based breakdown
-    analysis = {
-        "Confidence_Level": f"{confidence}%",
-        "Criteria": {
-            "Repetition": "Low" if "repeated phrases" not in text else "High",
-            "Lexical Diversity": "Moderate",
-            "Sentence Structure Diversity": "High",
-            "Grammar": "Correct",
-            "Content Specificity": "Low" if "generic" in text else "Moderate",
-            "Emotional Expressiveness": "Neutral",
-            "Coherence & Natural Transitions": "Moderate",
-            "Pronouns & Contextual Appropriateness": "Appropriate"
-        }
-    }
-    return analysis
+Output structure:
+- Result: Correct / Incorrect
+- Criteria-based analysis (reasoning under the criteria)
+- Confidence_level: percentage estimate
+"""
 
-# ------------------------
-# Main Routine
-# ------------------------
-if __name__ == "__main__":
-    dataset_file = "training_prompts_test.jsonl"
-    if not os.path.exists(dataset_file):
-        print(f"❌ File '{dataset_file}' not found.")
-        exit(1)
+# ---------------------------
+# Utility functions
+# ---------------------------
 
-    dataset = []
-    with open(dataset_file, "r") as f:
+def load_jsonl(filename):
+    """Load JSONL file into list of dicts"""
+    data = []
+    with open(filename, "r", encoding="utf-8") as f:
         for line in f:
-            if line.strip():
-                dataset.append(json.loads(line))
+            line = line.strip()
+            if line:
+                try:
+                    data.append(json.loads(line))
+                except json.JSONDecodeError as e:
+                    print(f"⚠️ Skipping invalid line: {e}")
+    return data
 
-    # Evaluate each prompt
-    for i, item in enumerate(dataset):
-        try:
-            prompt_text = item.get("contents", [])[0].get("parts", [])[0].get("text", "").strip()
-        except (KeyError, IndexError, TypeError):
-            print(f"⚠️ Skipping task {i+1}, invalid JSON structure.")
+def extract_text(item):
+    """Extract text from contents->parts->text"""
+    try:
+        return item["contents"][0]["parts"][0]["text"].strip()
+    except (KeyError, IndexError, TypeError):
+        return ""
+
+def run_gemini(task_text, rubric):
+    """Send task + rubric to Gemini"""
+    model = genai.GenerativeModel(MODEL)
+    full_prompt = f"{task_text}\n\nEvaluation Criteria:\n{rubric}"
+    response = model.generate_content(full_prompt)
+    return response.text if response else "⚠️ No response from Gemini."
+
+# ---------------------------
+# Main
+# ---------------------------
+
+def main():
+    input_file = "training_prompts_test.jsonl"
+    tasks = load_jsonl(input_file)
+
+    for i, item in enumerate(tasks, start=1):
+        print(f"\n=== Task {i} ===")
+        task_text = extract_text(item)
+
+        if not task_text:
+            print("No text found, skipping task.")
+            print("-" * 50)
             continue
 
-        submission_text = item.get("submission", "N/A")
-
-        print(f"\n=== Task {i+1} ===")
-        print("Prompt:", prompt_text if prompt_text else "(Empty)")
-        print("Submission:", submission_text)
+        print(f"Prompt:\n{task_text}\n")
         print("-" * 50)
 
-        if not prompt_text:
-            print("⚠️ No prompt text found, skipping task.")
-            continue
+        try:
+            # Decide rubric based on the type of task
+            if "feedback" in task_text.lower():
+                rubric = FEEDBACK_CRITERIA
+            elif "ai detection" in task_text.lower():
+                rubric = AI_DETECTION_CRITERIA
+            else:
+                rubric = FEEDBACK_CRITERIA  # default
 
-        # Combine prompt + submission
-        full_prompt = prompt_text
-        if submission_text != "N/A":
-            full_prompt += f"\n\nSubmission: {submission_text}"
+            output = run_gemini(task_text, rubric)
+            print("Evaluation Output:\n", output)
+        except Exception as e:
+            print(f"Error during generation: {e}")
+        print("-" * 50)
 
-        # Run Gemini
-        result = run_ai_detection(full_prompt)
-        model_text = result.get("text", "")
+if __name__ == "__main__":
+    main()
 
-        # Generate criteria-based analysis
-        analysis = generate_analysis(model_text)
-
-        # Print results clearly
-        print("Model Output:\n")
-        print(model_text)
-        print("\n--- AI Detection Analysis ---")
-        print(f"Confidence_Level: {analysis['Confidence_Level']}")
-        for criterion, value in analysis["Criteria"].items():
-            print(f"{criterion}: {value}")
-        print("=" * 80)
