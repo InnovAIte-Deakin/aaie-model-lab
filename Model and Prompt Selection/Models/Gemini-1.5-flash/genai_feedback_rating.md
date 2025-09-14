@@ -59,7 +59,7 @@
 | 6 | 5 | 5 | 5 | 4 | 5 | 5 | 5 (Excellent) |
 
 ---
-![alt text](Feedback rating using genai.png)
+![Ratings with genai](ratings%20with%20genai.png)
 
 ## Observations
 Across all the feedbacks, **Gemini 1.5 Flash** generated feedback consistently showing:
