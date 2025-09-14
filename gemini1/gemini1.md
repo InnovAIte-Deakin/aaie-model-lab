@@ -93,18 +93,22 @@ MODEL = "gemini-1.5-flash"
 
    1. *AI Detection Output:*
 
-      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect1.png" alt="AI Detection Output 1 image" width="300">
+      **AI Detection Output 1:**  
+      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect1.png" alt="AI Detection Output 1 image" width="300"><br>
 
-      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect2.png" alt="AI Detection Output 2 image" width="300">
+      **AI Detection Output 2:**  
+      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect2.png" alt="AI Detection Output 2 image" width="300"><br>
 
-      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect3.png" alt="AI Detection Output 3 image" width="300">
+      **AI Detection Output 3:**  
+      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/AI_detect3.png" alt="AI Detection Output 3 image" width="300"><br>
 
    1. *Feedback AI Generation Output:* 
 
-      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/Feedback1.png" alt="Feedback Generation Output 1 image" width="300">
+      **Feedback Generation Output 1:**
+      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/Feedback1.png" alt="Feedback Generation Output 1 image" width="300"><br>
 
-      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/e7ec3f79c77dacf3a13675ee355d0f66d9f290d1/gemini1/Feedback2.pngk2.png" alt="Feedback Generation Output 2 image" width="300">
-
+      **Feedback Generation Output 2:**
+      <img src="https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/ad399cbe698170006e72195ec645a1de05c40e6f/gemini1/Feedback2.png" alt="Feedback Generation Output 2 image" width="300"><br>
 
 1. **Observation**
 
