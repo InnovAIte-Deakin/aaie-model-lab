@@ -54,7 +54,7 @@ MAX_EXAMPLES = 3
 # -----------------------------
 # Initialize Gemini
 # -----------------------------
-client = genai.Client(api_key="AIzaSyCRZq_vYZ2cxJEH__NFcdPChTR-4lIrAUw")
+client = genai.Client(api_key="ADD YOUR API KEY")
 GEMINI_MODEL = "gemini-1.5-flash"
 
 
