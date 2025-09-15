@@ -115,7 +115,7 @@ Checks the status of the connected LLM and returns metadata about the model.
     Create a `.env` file in the `Deployment` directory and add your Google API key and Model ID:
     ```
     GOOGLE_API_KEY="your_api_key"
-    GOOGLE_MODEL_ID="your_model_id"
+    GOOGLE_MODEL_ID="gemini-2.0-flash" 
     ```
 
 ### Running the Application
@@ -144,10 +144,20 @@ docker build -t innovaite.aaie.model-lab/submission-backend:latest .
 
 ### Running the Container
 
-To run the application as a Docker container:
+#### Local Development
+
+For local development, you can use an `.env` file to manage your environment variables.
 
 ```bash
 docker run -p 8000:8000 --env-file .env innovaite.aaie.model-lab/submission-backend
 ```
 
 Make sure your `.env` file is present in the `Deployment` directory when running this command. The API will be accessible on `http://localhost:8000`.
+
+#### Production
+
+For production, it's recommended to pass environment variables directly to the `docker run` command or use a secret management system.
+
+```bash
+docker run -p 8000:8000 -e GOOGLE_MODEL_ID="gemini-2.0-flash" -e GOOGLE_API_KEY="your_api_key" innovaite.aaie.model-lab/submission-backend
+```
