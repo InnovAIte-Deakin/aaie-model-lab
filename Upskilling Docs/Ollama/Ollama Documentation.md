@@ -20,7 +20,7 @@ Ollama is designed to easily download and run open-source models (like Llama, Ge
 ![Model Check](Images/ollama-model-check.png)
 
 ## 3. Ollama API Endpoints
-### 3.1 Get "http://127.0.0.1:11434/api/tags"
+### 3.1 Get http://127.0.0.1:11434/api/tags
 - Returns a list of available models.
 - Useful to confirm which models are downloaded and ready to use.
 
@@ -42,11 +42,11 @@ Ollama is designed to easily download and run open-source models (like Llama, Ge
 - Useful for debugging or confirming compatibility.
 
 ## 4. Key Features
-- **Simple CLI + API**: Easy to pull, run, and manage models with a single command.
-- **Local Hosting**: Run models like Llama, Mistral, Gemma, or Phi entirely offline.
-- **API Compatibility**: Works with OpenAI-style API calls, so you can reuse existing GPT-based code.
-- **Cross-Platform**: Works on macOS, Windows, and Linux with minimal setup.
-- **Lightweight & Flexible**: Automatically handles model serving in the background.
+- **Simple CLI + API:** Easy to pull, run, and manage models with a single command.
+- **Local Hosting:** Run models like Llama, Mistral, Gemma, or Phi entirely offline.
+- **API Compatibility:** Works with OpenAI-style API calls, so you can reuse existing GPT-based code.
+- **Cross-Platform:** Works on macOS, Windows, and Linux with minimal setup.
+- **Lightweight & Flexible:** Automatically handles model serving in the background.
 
 ## 5. Limitations
 - **Resource Demands:** Like LM Studio, large models need significant RAM and GPU VRAM for good performance.
