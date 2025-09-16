@@ -9,6 +9,8 @@ import google.generativeai as genai
 # Choose model: "gemini-1.5-pro" or "gemini-1.5-flash"
 
 
+
+
 def generated_response_gemini(message):
     model = genai.GenerativeModel("gemini-1.5-flash",system_instruction= message['system'])
     chat = model.start_chat()
@@ -20,7 +22,7 @@ def generated_response_gemini(message):
 #- domain: the domain knowledge for the submission
 #- submission: the submission of the student
 def process_single_submission(args):
-    training_data = './TrainingData'
+    training_data = './TrainingData' #The training data PATH
     domain = args.get('domain')
     submission = args.get('submission')
 
