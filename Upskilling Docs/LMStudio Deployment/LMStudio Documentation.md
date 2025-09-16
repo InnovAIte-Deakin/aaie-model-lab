@@ -5,7 +5,7 @@ LMStudio is designed to download and run open-source models (like Gemma, Qwen, L
 ### 2.1 Download and Install LM Studio
 - Navigate to the official LM Studio website: [https://lmstudio.ai/](https://lmstudio.ai/)  
 - Download the version for your operating system (Windows, macOS, or Linux). Below is an example for macOS.
-![LM Studio Download Page](Images/lmstudio-download.png)
+![LM Studio Download Page](Images/lmstudio_download.png)
 - Download and install the application
   
 ### 2.2 Find and Download an AI Model
