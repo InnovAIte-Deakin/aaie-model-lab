@@ -92,7 +92,7 @@ def build_detection_prompt(example: str,submission: str):
         "system": system_prompt,
         "user": user_prompt}
 
-
+#Constribution: Qsaim in prompting
 def build_feedback_prompt(rubric: str, submission: str) -> List[Dict[str, str]]:
     """
     Build a structured prompt for rubric-aligned feedback generation.
