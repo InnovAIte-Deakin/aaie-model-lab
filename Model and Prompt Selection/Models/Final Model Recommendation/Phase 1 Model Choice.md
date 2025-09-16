@@ -114,39 +114,37 @@ Scales used:
 | **TinyLLaMA**      | Open             | 53% (16/30)         | 1/5 (format fails)   | N/A                  | Overconfidence on wrong preds                  | Not recommended                   |
 | **Phi 2**          | Open             | 45%                 | 3.8/5 (10% unique)   | Slow / heavy         | High mem; poor scalability                     | Not recommended                   |
 
-*Detection figure reported from run log; treat cautiously until re scored against ground truth.
 
 ## Final Recommendations for Phase 2  
 
 ### AI Detection  
-- **Primary:** **Gemini 1.5 Pro** – chosen for free availability, acceptable accuracy, and stable API.  
-- **Fallback:** *Not implemented in Phase 2*; will add DeepSeek R1 as ensemble fallback next trimester.  
+- **Primary:** **Gemini 1.5 Flash** – selected for its fast response time, generous context window, and free availability.  
+- **Fallback:** DeepSeek R1 will be added as an ensemble fallback in the next trimester once evaluation pipelines are stable.  
 
 ### Feedback Generation  
-- **Primary:** **Gemini 1.5 Pro** – strong rubric alignment, clear structure, and supportive tone.  
+- **Primary:** **Gemini 1.5 Flash** – chosen because it offers strong rubric alignment, clear structure, and supportive tone **without the token-limit risks of Gemini 1.5 Pro**, which could slow down or truncate outputs during batch evaluation.  
 - **Prompt Upgrades:**  
   - Require two mini-examples per weak criterion.  
-  - Include “First steps this week” and “Longer term steps” fields.  
-  - Enforce max length per section.  
-  - Discourage vague verbs (e.g. “add detail”).  
-- **Fallback:** *Not implemented in Phase 2*; Mistral 7B will be explored as batch fallback in future.
+  - Include **“First steps this week”** and **“Longer term steps”** fields for actionable feedback.  
+  - Enforce maximum length per section to keep outputs concise and readable.  
+  - Discourage vague verbs (e.g. “add detail”) and encourage specific actions.  
+- **Fallback:** Mistral 7B will be explored as a batch fallback for feedback in the next trimester.  
 
 ## Rationale for This Approach  
-- **Cost-effective:** Gemini’s free tier removes Azure’s 30-day GPT 4.1 constraint.  
+- **Cost-effective:** Gemini 1.5 Flash’s free tier removes Azure’s 30-day GPT-4.1 constraint and allows unlimited development iteration.  
 - **Simplified for MVP:** Single-model routing reduces engineering complexity for Phase 2.  
-- **Future-ready:** Leaves room to add fallback/ensemble models in the next trimester (DeepSeek for classification, Mistral for feedback).  
-- **Auditability:** Structured rationales and logs maintained for staff review.  
-- **Scalable:** Easy to extend with model routing once open-source inference infra is stable.
+- **Future-ready:** Leaves room to add fallback/ensemble models (DeepSeek for classification, Mistral for feedback) in the next phase.  
+- **Auditability:** Structured rationales and logs are maintained for staff review.  
+- **Scalable:** Easy to extend with model routing once open-source inference infrastructure is stable.  
 
-## Why GPT 4.1 Was Rejected for Phase 2  
+## Why GPT-4.1 Was Rejected for Phase 2  
 
-While GPT 4.1 produced the **highest accuracy (87%)** and well-structured feedback, it was rejected as the Phase 2 primary model for the following reasons:  
+While GPT-4.1 produced the **highest accuracy (87%)** and well-structured feedback, it was rejected as the Phase 2 primary model for the following reasons:  
 
-- **Licensing Constraint:** GPT 4.1 access is only available through a **30-day Azure trial**, which is not sustainable for ongoing production use.  
-- **Cost Considerations:** Paid Azure consumption would introduce a recurring cost per request, making it difficult to control budgets during pilot rollout.  
-- **Vendor Lock-in Risk:** Relying on a single, paid vendor this early would hinder flexibility to pivot to open or hybrid setups later.  
-- **Gemini Availability:** Gemini 1.5 Pro is currently free, provides competitive quality for feedback generation, and sufficient accuracy for detection with prompt tuning.  
-- **Simplicity for MVP:** Using Gemini as the single primary model reduces engineering overhead (no trial account rotation, no Azure quota management).  
+- **Licensing Constraint:** GPT-4.1 access is only available through a **30-day Azure trial**, which is not sustainable for production.  
+- **Cost Considerations:** Paid Azure consumption introduces a recurring cost per request, making budgeting difficult during pilot rollout.  
+- **Vendor Lock-in Risk:** Relying on a single paid vendor early would hinder flexibility to pivot to open or hybrid setups later.  
+- **Gemini Flash Availability:** Gemini 1.5 Flash is free, offers competitive quality for feedback generation, and avoids the token-limit issues seen with Pro.  
+- **Simplicity for MVP:** Using Gemini Flash as the single primary model avoids trial rotation, quota management, and reduces engineering overhead.  
 
-**Conclusion:** GPT 4.1 will remain a **secondary model** and may be reconsidered if free or academic access becomes available in future phases.
-
+**Conclusion:** GPT-4.1 will remain a **secondary model** and may be reconsidered if free or academic access becomes available in future phases.
