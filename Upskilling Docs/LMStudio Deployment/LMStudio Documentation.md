@@ -5,22 +5,22 @@ LMStudio is designed to download and run open-source models (like Gemma, Qwen, L
 ### 2.1 Download and Install LM Studio
 - Navigate to the official LM Studio website: [https://lmstudio.ai/](https://lmstudio.ai/)  
 - Download the version for your operating system (Windows, macOS, or Linux). Below is an example for macOS.
-![LM Studio Download Page](images/lmstudio-download.png)
+![LM Studio Download Page](Images/lmstudio-download.png)
 - Download and install the application
 - 
 ### 2.2 Find and Download an AI Model
 - Open LM Studio.
 - Use the search bar to find a model you want.  For example, check the image below to search for the Gemma model.
-![Model Search Example](images/lmstudio-search-gemma.png)
+![Model Search Example](Images/lmstudio-search-gemma.png)
 - Click on the required model and then click the download button at the bottom right.
 
 ### 2.3 Start the Local API Server
 - Select the model you want to use from the list of downloaded models.  
 - Click on the model like Gemma 3 1 B.  
-![Model Selection](images/lmstudio-model-selection.png)
+![Model Selection](Images/lmstudio-model-selection.png)
 - Review the server settings on the left (default Host: localhost, Port: 1234 are usually fine).
 - Click Start Server.
-![LM Studio Server Logs](images/lmstudio-server-start.png)
+![LM Studio Server Logs](Images/lmstudio-server-start.png)
 - Once started, you will see server logs, and the button will change to Stop Server. Your local, OpenAI-compatible API is now running and ready to receive requests.
 
 ## 3. LM Studio API Endpoints
