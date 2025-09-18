@@ -3,13 +3,7 @@ FROM python:3.13-slim
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY ./src ./src
-
-ARG GOOGLE_MODEL_ID
-ENV GOOGLE_MODEL_ID=$GOOGLE_MODEL_ID
-
-ARG GOOGLE_API_KEY
-ENV GOOGLE_API_KEY=$GOOGLE_API_KEY
+COPY src/ ./src
 
 ENV PYTHONPATH=/app
 
