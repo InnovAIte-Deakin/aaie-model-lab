@@ -87,6 +87,24 @@ As with many open-weight models, Qwen models can be deployed as self-hosted solu
 - **Maintenance and Updates**: Self-hosted models require ongoing maintenance, including updates for security patches and improvements, which can add operational overhead.
 - **Resource Requirements**: While smaller models are less demanding, scaling up to larger models may require significant compute resources, impacting cost and infrastructure planning.
 
+## Resource Options and Alternatives
+Running large language models like Qwen3 locally—especially on CPU-only environments—can be inefficient and impractical for most use cases. Fortunately, there are several flexible options for accessing model inference and fine-tuning without the need for heavy infrastructure:
+
+**Cloud-Based APIs**
+* [OpenRouter](https://openrouter.ai/) and similar platforms offer hosted access to Qwen3 and other open-weight models via API, eliminating the need for local deployment.
+* These services often support generous context windows (e.g., 128K+ tokens) and advanced features like tool use, function calling, and reasoning control.
+* Pricing varies, but many models—including Qwen variants—are available for free or at low cost during testing phases.
+* Refer to this link for free acesss to Qwen3 14B https://openrouter.ai/qwen/qwen3-14b:free
+
+
+**Notebook-Based Inference (with GPU)**
+* For students who prefer more control but lack enterprise-grade infrastructure, running Qwen3 in a notebook (e.g., [Google Colab](https://colab.research.google.com/), [Kaggle](https://www.kaggle.com/code), or [Paperspace](https://www.paperspace.com/notebooks)) with GPU acceleration is a viable middle ground.
+* These platforms allow temporary access to high-performance GPUs, making it feasible to run inference or fine-tune smaller variants of Qwen3.
+
+**Model Distillation and Quantization**
+* Lightweight versions of Qwen3 (e.g., 8B or distilled variants) can be optimized for lower-resource environments using techniques like quantization (e.g., GPTQ, FP8).
+* These approaches reduce memory and compute requirements, enabling deployment on consumer-grade hardware or edge devices.
+
 ## Suitability for AAIE Project Requirements
 The Qwen 3 model is a strong candidate for fine-tuning within the AAIE project. With 0.6B parameters, it is resource-efficient and can be run on CPU for initial experimentation, making it accessible for teams with limited hardware. As project requirements evolve and GPU resources become available, the model can be scaled up to larger variants—up to 72B parameters—offering flexibility for future growth.
 
