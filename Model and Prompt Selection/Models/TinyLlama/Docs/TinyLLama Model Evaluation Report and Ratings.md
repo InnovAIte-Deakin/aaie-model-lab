@@ -12,9 +12,9 @@
 | Domain | Submissions | Correct | Wrong | Notes |
 | --- | --- | --- | --- | --- |
 | Psychology | 6 | 3 | 3 | Mixed results; struggles distinguishing Hybrid vs Human. Some AI-assisted writing flagged incorrectly. |
-| IT | 6 | 4 | 2 | Best-performing domain; Human essays recognized well. Some AI misclassified as Human persists. |
-| Engineering | 6 | 3 | 3 | Similar to Psychology; errors mostly in Hybrid detection. |
-| Teaching | 6 | 2 | 4 | Weak domain; frequent over-attribution to Human, especially for nuanced AI-assisted submissions. |
+| IT | 6 | 3 | 3 | Best-performing domain; Human essays recognized well. Some AI misclassified as Human persists. |
+| Engineering | 6 | 5 | 1 | Similar to Psychology; errors mostly in Hybrid detection. |
+| Teaching | 6 | 4 | 2 | Weak domain; frequent over-attribution to Human, especially for nuanced AI-assisted submissions. |
 | Accounting | 6 | 1 | 5 | Major misclassification of AI as Human; Hybrid detection inconsistent. Only Submission 6 correctly identified as Hybrid. |
 
 **Insight:** IT is the only domain with reasonable reliability. Teaching & Accounting are clear weaknesses, heavily affecting overall performance.
