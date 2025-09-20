@@ -28,7 +28,7 @@ BERTScore compares meaning, not just words. It uses language representations to 
 
 # **Classification metrics (for AI‑detection or rubric labels)**
 
-Accuracy \= overall right-or-wrong. Precision \= when the model says “AI”, how often it’s correct. Recall \= of all actual AI cases, how many we catch. F1 \= balance of precision and recall. Averaging: Macro treats each class equally (good with imbalance); Weighted reflects real-world proportions; Micro aggregates globally (often equals accuracy in multiclass).
+Accuracy \= overall right-or-wrong. Precision \= when the model says “AI”, how often it’s correct. Recall \= of all actual AI cases, how many we catch. F1 \= balance of precision and recall. Macro Averaging: Calculates the metric independently for each class, then takes the average. This treats all classes equally, making it useful when class distribution is imbalanced.; Weighted Averaging: Similar to macro but weights each class by its frequency. This reflects real-world proportions and prevents small classes from dominating the score.; Micro Averging: Aggregates contributions of all classes to compute a global metric. In multi-class tasks, this often equals overall accuracy and is good for capturing system-wide performance.
 
 # **Fairness and care**
 
