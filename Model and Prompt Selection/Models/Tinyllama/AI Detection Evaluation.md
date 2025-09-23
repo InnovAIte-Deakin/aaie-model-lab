@@ -5,7 +5,7 @@
 ---
 
 ## Overview  
-This PR summarizes the AI detector performance on 6 submissions across AI, Human, and Hybrid labels, using a 0–5 rating scale based on alignment between true and predicted labels.  
+This PR summarizes the AI detector’s performance on six submissions across AI, Human, and Hybrid labels. The evaluation was conducted **using only psychology data and base prompts** as part of the Phase 1 model selection, later the **scope was expanded to include five datasets** which is completed and can be access with  PR (https://github.com/InnovAIte-Deakin/aaie-model-lab/pull/70). Performance evaluation uses a 0–5 rating scale, based on the alignment between true and predicted labels.
 
 ---
 
@@ -13,12 +13,12 @@ This PR summarizes the AI detector performance on 6 submissions across AI, Human
 
 | Submission | True Label | Predicted Label | Correct? | Rating (0–5) |
 |------------|------------|-----------------|----------|--------------|
-| 1          | AI         | Human           | ❌       | 1            |
-| 2          | AI         | Human           | ❌       | 1            |
-| 3          | Human      | Human           | ✅       | 5            |
-| 4          | Human      | Hybrid          | ❌       | 4            |
-| 5          | Hybrid     | Human           | ❌       | 4            |
-| 6          | Hybrid     | Hybrid          | ✅       | 5            |
+| 1          | AI         | Human           | No       | 1            |
+| 2          | AI         | Human           | No       | 1            |
+| 3          | Human      | Human           | Yes      | 5            |
+| 4          | Human      | Hybrid          | No       | 4            |
+| 5          | Hybrid     | Human           | No       | 4            |
+| 6          | Hybrid     | Hybrid          | Yes      | 5            |
 
 ---
 
