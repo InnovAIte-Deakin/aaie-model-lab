@@ -74,7 +74,7 @@ Additional info: https://qwen.readthedocs.io/en/v2.5/getting_started/concepts.ht
 * Lots of community support and involvement, eg Nvidia, and Deepseek models based on Qwen eg: https://huggingface.co/models?sort=trending&search=qwen
 
 ## Disadvantages: 
-* Apache 2.0 license more restrictive than MIT license 
+* Qwen is provided under Apache 2.0 license which is more restrictive than MIT license, because it includes a mandatory disclaimer for modifications, explicit patent grants to users, and clearer trademark protection. The MIT license is a simpler, more minimalist license with only a basic attribution requirement.  
 * Context windows may not be sufficient size for AAIE task 
 * Qwen 3 0.6B may still be too resource/compute heavy for fine tuning task (dependent on GPU availabilities) 
 
