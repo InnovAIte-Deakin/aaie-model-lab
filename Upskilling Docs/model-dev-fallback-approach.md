@@ -59,5 +59,12 @@ During Phase 1 model selection, we identified the need for fallback models to en
 * **Latency Targets:** Reach sub-10s inference for fallback models to ensure project viability.
 * **Cloud Platform:** Access to a shared Cloud Platform that would allow team to build and deploy services implementing fallback features. 
 
+### Fallback Models summary
+
+| Model        | Primary Role       | Strengths                              | Trade-offs               |
+|--------------|--------------------|----------------------------------------|--------------------------|
+| DeepSeek R1  | Detection (AI/Human/Hybrid) | Structured rationales, open-source, fine-tuning ready | Slow (~34s latency)      |
+| Mistral 7B   | Feedback generation | Open-source, can be fine-tuned for rubric alignment | Lower feedback quality, QC required |
+
 
 Reference: [Model and Prompt Selection/Models/Final Model Recommendation/Phase 1 Model Choice.md](https://github.com/InnovAIte-Deakin/aaie-model-lab/blob/24226a16917b8b9c25d826fedba6a16f8b7ecd4a/Model%20and%20Prompt%20Selection/Models/Final%20Model%20Recommendation/Phase%201%20Model%20Choice.md)
