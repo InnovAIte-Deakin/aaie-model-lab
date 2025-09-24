@@ -12,7 +12,7 @@ For AI detection, R1’s reasoning-first training makes it capable of producing 
 In our project AAIE, DeepSeek-R1 is expected to show some limitations that may affect its suitability. For feedback generation, it might not be able to provide the depth of evidence, and the outputs might often be too generic. For detection, the measured accuracy might not be too high compared to alternative models (especially commercial ones) we tested, indicating that R1 may not be able to provide the reliability required for high-stakes academic integrity tasks.  
 
 ## Azure AI API Access  
-Instead of using OpenAI’s direct API, we deployed GPT-4.1 through the Azure OpenAI Service which offers free student credits. This was done using the official AzureOpenAI Python SDK client. Running via Azure ensured enterprise-grade reliability, scale, observability, and compliance, all requirements for our AAIE project. It also avoids reliance on free credits from the consumer-facing API and instead anchors the system within Deakin’s cloud infrastructure and cost controls.  
+Instead of using OpenAI’s direct API, we deployed the R1 through the Azure OpenAI Service which offers free student credits. This was done using the official AzureOpenAI Python SDK client. Running via Azure ensured enterprise-grade reliability, scale, observability, and compliance, all requirements for our AAIE project. It also avoids reliance on free credits from the consumer-facing API and instead anchors the system within Deakin’s cloud infrastructure and cost controls.  
 
 ## Use in AAIE  
 We used the same pipeline and same dataset structure as with all the other models we tested:  
