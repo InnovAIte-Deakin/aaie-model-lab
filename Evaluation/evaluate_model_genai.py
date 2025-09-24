@@ -402,7 +402,7 @@ class EvaluateModel():
 
 from huggingface_hub import login
 model_id = "mistralai/Mistral-7B-Instruct-v0.2"
-token = "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"
+token = "HF_TOKEN"
 login(token=token)
 
 
