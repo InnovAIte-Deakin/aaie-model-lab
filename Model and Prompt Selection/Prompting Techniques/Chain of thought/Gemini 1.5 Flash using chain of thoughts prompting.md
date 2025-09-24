@@ -23,6 +23,31 @@ We used the same pipeline and same dataset structure as with all the other model
 - Output captured: per submission [DETECTION] and [FEEDBACK] blocks in plain text.  
 
 This ensured a like-for-like comparison with other models.  
+# Why Chain of Thought Prompting?
+### Improves Accuracy in AI Detection
+
+Your evaluation shows Gemini 1.5 Flash achieved 100% accuracy in Engineering, Psychology, and Teaching. This aligns with the fact that CoT prompting encourages the model to reason step by step, reducing shortcut errors.
+
+In weaker domains like Accounting and IT, the errors occurred in Hybrid/Human cases, where reasoning about subtle differences is harder. CoT helps the model justify its prediction, making it less likely to misclassify borderline submissions.
+
+### Enhances Feedback Depth and Actionability
+
+The human evaluation noted that feedback was correct, clear, and professional but sometimes lacked depth and concrete examples (especially in Accounting and IT).
+
+CoT prompting can push the model to unpack its reasoning, giving more detailed explanations, examples, and risk analysis, thereby directly addressing the main limitation you observed.
+
+### Consistency Across Domains
+
+The feedback analysis highlighted strong clarity, tone, and coherence, partly due to the rubric-based structure. CoT prompting enforces structured reasoning, which ensures that feedback maintains this coherent flow even across varied domains.
+
+### Supports Multimodal and Extended Context Handling
+
+Since Gemini 1.5 Flash is optimized for long-context and multimodal inputs, CoT prompting allows the model to break down complex information (e.g., from long documents or tables) into intermediate reasoning steps, improving reliability on extended contexts.
+
+### Balances Flash’s Speed vs. Pro’s Reasoning
+
+Flash is designed for speed and cost-efficiency but has less raw reasoning depth compared to Pro. CoT prompting bridges this gap by guiding Flash to apply reasoning strategies explicitly, improving result quality without needing to always switch to Pro.
+
 
 ---
 
@@ -114,7 +139,7 @@ Overall, the GenAI feedback is consistently accurate, clear, constructive, and m
 ---
 
 ## Recommendations
-- Gemini 1.5 Flash should be adopted for AAIR due to its speed, cost-efficiency, and strong results in most domains. However, a dual-layer strategy (Flash + Pro or Flash + reviewer for Accounting/IT) will ensure balanced accuracy and actionable feedback quality across all domains.
+- Chain of Thought prompting should be consistently applied, as it strengthens accuracy in edge cases and improves the depth and actionability of feedback. However, a dual-layer strategy (Flash with CoT + Pro or Flash with CoT + reviewer for Accounting/IT) will ensure balanced accuracy, richer reasoning, and actionable feedback quality across all domains.
 ---
 
 ## Advantages
