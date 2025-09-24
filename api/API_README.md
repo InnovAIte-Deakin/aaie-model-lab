@@ -210,17 +210,19 @@ The API validates the following:
 ## Current Implementation Notes
 
 ### LLM Integration
-- **Current**: Mock implementation with simple scoring logic
-- **Future**: Replace `mock_llm_evaluation()` function with actual LLM API calls
-- **Integration**: Can easily integrate with OpenAI GPT, Anthropic Claude, or other LLM providers
+- **Current**: Google Gemini model integration with advanced prompt engineering
+- **Models Supported**: Gemini Pro, Gemini 1.5 Pro, Gemini 1.5 Flash
+- **Features**: Intelligent prompt design, response parsing, and fallback mechanisms
+- **API Key**: Requires Google AI API key for Gemini model access
 
 ### Scoring Logic
-The current mock implementation uses:
-- Text length (word count)
-- Content analysis (keyword presence)
-- Basic heuristics for demonstration
+The Gemini integration uses:
+- Advanced prompt engineering for rubric evaluation
+- Structured response parsing for consistent scoring
+- Intelligent fallback to rule-based evaluation
+- Performance optimization with response caching
 
-Replace with actual LLM prompts and evaluation logic for production use.
+The system automatically handles API rate limits and provides reliable scoring even during high load.
 
 ## Testing
 
@@ -240,12 +242,13 @@ pytest test_app.py
 
 ## Future Enhancements
 
-1. **Real LLM Integration**: Connect to actual LLM APIs
+1. **Advanced Gemini Models**: Integrate latest Gemini 2.0 models
 2. **Custom Rubrics**: Allow dynamic rubric configuration
 3. **Batch Processing**: Evaluate multiple submissions at once
 4. **Confidence Scores**: Add confidence levels to evaluations
 5. **Detailed Feedback**: Provide specific improvement suggestions
 6. **Analytics**: Track evaluation patterns and performance
+7. **Multimodal Support**: Process images and documents with Gemini Pro Vision
 
 ## Support
 

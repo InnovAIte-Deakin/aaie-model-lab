@@ -4,7 +4,7 @@ import json
 import os
 from typing import Dict, Any
 import logging
-from hf_model_integration import create_hf_scorer
+from gemini_model_integration import create_gemini_scorer, GeminiConfig
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -13,8 +13,8 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
-# Initialize HF model scorer
-HF_SCORER = None
+# Initialize Gemini model scorer
+GEMINI_SCORER = None
 
 # Rubric categories and their possible labels
 RUBRIC_CATEGORIES = {
@@ -52,31 +52,48 @@ RUBRIC_CRITERIA = {
     }
 }
 
-def initialize_hf_model():
-    """Initialize the Hugging Face model"""
-    global HF_SCORER
+def initialize_gemini_model():
+    """Initialize the Google Gemini model"""
+    global GEMINI_SCORER
     
     try:
+        # Get API key from environment
+        api_key = os.environ.get('GEMINI_API_KEY')
+        if not api_key:
+            logger.error("GEMINI_API_KEY environment variable is required")
+            return False
+        
         model_type = os.environ.get('MODEL_TYPE', 'simple')
-        model_name = os.environ.get('MODEL_NAME', 'distilbert-base-uncased')
+        model_name = os.environ.get('GEMINI_MODEL_NAME', 'gemini-pro')
+        temperature = float(os.environ.get('TEMPERATURE', 0.7))
+        max_tokens = int(os.environ.get('MAX_TOKENS', 1000))
         
-        logger.info(f"Initializing HF model: {model_name} (type: {model_type})")
-        HF_SCORER = create_hf_scorer(model_type, model_name)
+        logger.info(f"Initializing Gemini model: {model_name} (type: {model_type})")
         
-        if HF_SCORER.load_model():
-            logger.info("HF model loaded successfully!")
+        # Create configuration
+        config = GeminiConfig(
+            api_key=api_key,
+            model_name=model_name,
+            temperature=temperature,
+            max_tokens=max_tokens
+        )
+        
+        GEMINI_SCORER = create_gemini_scorer(model_type, config)
+        
+        if GEMINI_SCORER.load_model():
+            logger.info("Gemini model loaded successfully!")
             return True
         else:
-            logger.error("Failed to load HF model, falling back to mock evaluation")
+            logger.error("Failed to load Gemini model, falling back to mock evaluation")
             return False
             
     except Exception as e:
-        logger.error(f"Error initializing HF model: {str(e)}")
+        logger.error(f"Error initializing Gemini model: {str(e)}")
         return False
 
 def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     """
-    LLM evaluation function that uses HF model or falls back to mock logic.
+    LLM evaluation function that uses Gemini model or falls back to mock logic.
     
     Args:
         student_submission (str): The student's submission text
@@ -84,15 +101,15 @@ def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     Returns:
         Dict[str, str]: Dictionary with rubric category scores
     """
-    global HF_SCORER
+    global GEMINI_SCORER
     
-    # Try to use HF model if available
-    if HF_SCORER is not None:
+    # Try to use Gemini model if available
+    if GEMINI_SCORER is not None:
         try:
-            logger.info("Using HF model for evaluation")
-            return HF_SCORER.evaluate_submission(student_submission)
+            logger.info("Using Gemini model for evaluation")
+            return GEMINI_SCORER.evaluate_submission(student_submission)
         except Exception as e:
-            logger.error(f"HF model evaluation failed: {str(e)}, falling back to mock")
+            logger.error(f"Gemini model evaluation failed: {str(e)}, falling back to mock")
     
     # Fallback to mock implementation
     logger.info("Using mock evaluation logic")
@@ -168,7 +185,7 @@ def evaluate_submission():
         "Clarity": "Excellent|Good|Fair|Poor", 
         "Relevance": "Excellent|Good|Fair|Poor",
         "Academic_Writing": "Excellent|Good|Fair|Poor"
-    }
+    }                   
     """
     try:
         # Get JSON data from request
@@ -229,9 +246,9 @@ def get_rubric_info():
     }), 200
 
 if __name__ == '__main__':
-    # Initialize HF model on startup
+    # Initialize Gemini model on startup
     logger.info("Starting AAIE Rubric Scoring API...")
-    initialize_hf_model()
+    initialize_gemini_model()
     
     port = int(os.environ.get('PORT', 5001))  # Changed from 5000 to 5001
     logger.info(f"Starting server on port {port}")
