@@ -58,7 +58,7 @@ LM Studio exposes a local API that mimics commercial AI services. Below are the 
 - **Ease of Integration**: Plug into existing applications without major code changes.
 - 
 ## 5. Limitations
-- **Resource Intensive**: Running LLMs locally typically requires 8–16+ GB of RAM (minimum) and benefits greatly from a GPU with sufficient VRAM for faster inference.
+- **Resource Intensive**: Running LLMs locally typically requires 8 – 16 + GB of RAM (minimum) and benefits greatly from a GPU with sufficient VRAM for faster inference.
 - **Performance**: Slower inference compared to commercial cloud APIs unless using powerful hardware.
 - **Single-User Focus**: Not optimized for high-concurrency production workloads.
 - **No Commercial Support**: Relies on community forums for troubleshooting and updates.
