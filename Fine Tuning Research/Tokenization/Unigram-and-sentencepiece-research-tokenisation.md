@@ -29,7 +29,7 @@
 - Starts with a base vocabulary of characters.  
 - Iteratively merges the most frequent adjacent token pairs to form new tokens.  
 - Produces a **fixed-size** vocabulary optimized for the corpus.  
-- Encodes unknown/rare words as sequences of subwords.  
+- Encodes unknown/rare words as sequences of subwords. [R1, R2]
 - **Example**  
 unhappiness → ["un", "##happi", "##ness"]
 ### 1.2 Unigram Language Model (probabilistic)
@@ -37,7 +37,7 @@ unhappiness → ["un", "##happi", "##ness"]
 - Uses **EM (Expectation–Maximization)** to prune and optimize the vocabulary.  
 - Chooses tokenizations that **maximize the likelihood** of the training data.  
 - **Example**  
-unhappiness → ["un", "happiness"] OR ["un", "happi", "ness"]
+unhappiness → ["un", "happiness"] OR ["un", "happi", "ness"][R3, R4]
 
 ---
 
@@ -63,14 +63,14 @@ unhappiness → ["un", "happiness"] OR ["un", "happi", "ness"]
 **Weaknesses**
 - Heavier training (EM iterations); more tuning required.  
 - Can under-segment if poorly tuned.  
-- Requires robust normalization and likelihood estimation.
+- Requires robust normalization and likelihood estimation.[R3]
 
 ---
 
 ## 3. Suitability for Educational Text
 - **Academic language.** Unigram often preserves complex terms (e.g., `photosynthesis`, `metacognition`) with fewer fragments; WordPiece may split rarer morphemes.  
 - **Feedback/rubrics.** Both work; Unigram’s stochasticity (with dropout) can help robustness to phrasing variation.  
-- **Mathematical content.** Tokenizer must handle LaTeX-style expressions, variables, operators (e.g., `E = mc^2`, `\frac{x}{y}`); WordPiece tends to fragment these; Unigram preserves more logical chunks when trained on math-rich text.
+- **Mathematical content.** Tokenizer must handle LaTeX-style expressions, variables, operators (e.g., `E = mc^2`, `\frac{x}{y}`); WordPiece tends to fragment these; Unigram preserves more logical chunks when trained on math-rich text.[R4, R6, R7]
 
 ### 3.1 Clarification: “special tokens”
 By “special tokens” we mean **citation markers** and **bracketed references** commonly found in academic writing—e.g., ``[1]``, ``(see above)``, ``(Eq. 3)``—plus rubric markers and numbered bullets.  
@@ -81,7 +81,7 @@ By “special tokens” we mean **citation markers** and **bracketed references*
 
 ---
 
-## 4. Implementation Complexity (Comparison Table)
+## 4. Implementation Complexity (Comparison Table)[R4, R8]
 
 | Factor               | WordPiece                                | Unigram (SentencePiece)                   |
 |---------------------|-------------------------------------------|-------------------------------------------|
@@ -127,7 +127,7 @@ By “special tokens” we mean **citation markers** and **bracketed references*
 **Integration plan**
 - Train on the AAIE corpus (academic + math-rich).  
 - Plug into **NanoGPT** and **TinyLLaMA** pipelines.  
-- Evaluate on downstream tasks: **feedback generation** and **AI-text detection**.
+- Evaluate on downstream tasks: **feedback generation** and **AI-text detection**.[R4, R8]
 
 
 ---
@@ -138,13 +138,48 @@ BERT (Bidirectional Encoder Representations from Transformers) is a widely used 
 
 **Why it matters for AAIE**  
 - If we want to reuse BERT-family checkpoints or align strictly with BERT’s preprocessing, **WordPiece** is the most compatible.  
-- If our priority is **fidelity on math-rich, structured educational text** and we control training end-to-end, **Unigram** typically preserves structure better and reduces fragmentation—leading to cleaner inputs for generation and detection tasks.
+- If our priority is **fidelity on math-rich, structured educational text** and we control training end-to-end, **Unigram** typically preserves structure better and reduces fragmentation—leading to cleaner inputs for generation and detection tasks.[R1]
 
 ---
 
 ## 8. Recommendation & Next Steps
 **Recommendation**  
 - **Primary:** **Unigram (SentencePiece)**  
-- **Also keep:** **WordPiece** for BERT compatibility and controlled baselines.
+- **Also keep:** **WordPiece** for BERT compatibility and controlled baselines.[R3, R4, R7]
+
+---
+
+---
+
+## 8. References
+
+[R1] Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL-HLT. (BERT uses WordPiece.)
+
+[R2] Wu, Y., Schuster, M., Chen, Z., et al. (2016). Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation. arXiv:1609.08144. (Describes WordPiece segmentation used at Google.)
+
+[R3] Kudo, T. (2018). Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates. ACL. (Introduces Unigram LM tokenization + tokenizer dropout/sampling.)
+
+[R4] Kudo, T., & Richardson, J. (2018). SentencePiece: A Simple and Language Independent Subword Tokenizer and Detokenizer for Neural Text Processing. EMNLP (System Demonstrations). (Tooling and methodology for Unigram and BPE.)
+
+[R5] Sennrich, R., Haddow, B., & Birch, A. (2016). Neural Machine Translation of Rare Words with Subword Units. ACL. (Canonical BPE paper — useful contrast with WordPiece/Unigram.)
+
+[R6] Xue, L., Constant, N., Roberts, A., et al. (2022). ByT5: Towards a Token-Free Future with Pre-trained Byte-to-Byte Models. TACL. (Tokenizer choices matter; byte-level robustness.)
+
+[R7] Raffel, C., Shazeer, N., Roberts, A., et al. (2020). Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (T5). JMLR. (T5 uses SentencePiece Unigram ~32k.)
+
+[R8] Hugging Face Documentation. tokenizers and transformers (accessed 2024). (APIs for WordPiece, SentencePiece/Unigram, integration patterns.)
+
+---
+---
+
+## 8. Change Log since Last Review
+
+-**Label Consistency (per #18)**: Corrected all occurrences of “Ruberies” → “Rubrics.”
+
+-**Role Clarity**: Updated the DFD to explicitly indicate whether Teacher Review is optional or mandatory before final feedback delivery (added conditional decision shape).
+
+-**References Added**: Added academic references on tokenizer techniques (WordPiece, Unigram, SentencePiece, Subword Regularization, etc.) to strengthen credibility and back analysis with published sources.
+
+-**Improved Structure & Formatting**: Reformatted the tokenization analysis for better readability with clear sections, tables, and headings.
 
 ---
