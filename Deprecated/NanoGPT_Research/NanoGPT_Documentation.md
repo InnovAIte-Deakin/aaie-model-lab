@@ -28,7 +28,7 @@ The model implemented in NanoGPT is a decoder-only Transformer, closely followin
 All components are integrated to efficiently handle autoregressive language modeling tasks.
 
 The full implementation of this architecture can be found in the `model.py` file within the official NanoGPT GitHub repository, maintained by Andrej Karpathy.
-![nano_gpt](nano_gpt.png)
+![nano_gpt](NanoGPT_Documentation.png)
 
 Figure 1: The architecture of basic NanoGPT proposed by Karpathy.  
 (Note: Not shown here. Insert figure manually if needed.)
