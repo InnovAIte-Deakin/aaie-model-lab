@@ -1,0 +1,34 @@
+[
+  {
+    "sample":1,
+    "submission":"Climate change is a serious problem that affects o...",
+    "Structure":"Poor",
+    "Clarity":"Good",
+    "Relevance":"Good",
+    "Academic_Writing":"Poor"
+  },
+  {
+    "sample":2,
+    "submission":"The economic impact of climate change is significa...",
+    "Structure":"Good",
+    "Clarity":"Excellent",
+    "Relevance":"Good",
+    "Academic_Writing":"Good"
+  },
+  {
+    "sample":3,
+    "submission":"Bad essay. Climate change bad....",
+    "Structure":"Poor",
+    "Clarity":"Poor",
+    "Relevance":"Fair",
+    "Academic_Writing":"Poor"
+  },
+  {
+    "sample":4,
+    "submission":"This essay will explore the multifaceted economic ...",
+    "Structure":"Good",
+    "Clarity":"Excellent",
+    "Relevance":"Excellent",
+    "Academic_Writing":"Good"
+  }
+]
