@@ -4,7 +4,7 @@
 * **Repetitive Summary Language:** A clear weakness is the repetitive phrasing in the "Overall Summary" sections. Many evaluations begin with nearly identical sentences, such as "The submission demonstrates a solid understanding of...," which reduces the personalization of the feedback.
 * **Unreliable AI Detection:** The model's performance in distinguishing between Human, AI, and Hybrid writing is poor. With an overall accuracy of approximately 37%, it performs only slightly better than random chance.
 * **Strong Classification Bias:** The model shows a clear bias against classifying submissions as purely Human. It overwhelmingly favors the Hybrid and AI labels, misclassifying 9 out of 10 human-written pieces. This makes it unusable for reliably identifying authentic student work.
-## Performance Data\
+## Performance Data
 | Metric                | Gemini Result |
 |-----------------------|---------------|
 | Feedback Quality      | 4/5           |
