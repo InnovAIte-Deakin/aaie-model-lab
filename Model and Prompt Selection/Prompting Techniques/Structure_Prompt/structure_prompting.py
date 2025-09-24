@@ -9,7 +9,7 @@ import google.generativeai as genai
 
 
 # %% [markdown]
-# # Build the dection prompt
+# # Build the detection prompt
 
 # %%
 from typing import List, Dict, Any
