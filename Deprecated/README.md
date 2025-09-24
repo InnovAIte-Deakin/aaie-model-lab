@@ -1,40 +1,43 @@
-# LLM Rubric Scoring API
+# LLM Rubric Scoring API with Google Gemini Integration
 
-## API Folder Structure
+## Deprecated Folder Structure
 
-This folder contains the complete implementation of the LLM Rubric Scoring API for evaluating student submissions.
+This folder contains the complete implementation of the LLM Rubric Scoring API with Google Gemini AI integration for evaluating student submissions.
 
 ```
-api/
-├── README.md              # This overview file
-├── app.py                 # Main Flask application with API endpoints
-├── requirements.txt       # Python dependencies
-├── API_README.md         # Comprehensive API documentation
-├── test_app.py           # Unit tests for the API
-└── example_usage.py      # Example script showing how to use the API
+Deprecated/
+├── README.md                    # This overview file
+├── app.py                       # Main Flask application with Gemini integration
+├── requirements.txt             # Python dependencies (includes Gemini)
+├── API_README.md               # Comprehensive API documentation
+├── test_app.py                 # Unit tests for the API
+├── gemini_model_integration.py # Google Gemini AI integration module
+└── GEMINI_INTEGRATION_GUIDE.md # Complete Gemini setup and usage guide
 ```
 
 ## Quick Start
 
 ### 1. Install Dependencies
 ```bash
-cd api
+cd Deprecated
 pip install -r requirements.txt
 ```
 
-### 2. Run the API Server
+### 2. Set up Google AI API Key (Optional)
+```bash
+export GOOGLE_AI_API_KEY="your-api-key-here"
+```
+
+### 3. Run the API Server
 ```bash
 python app.py
 ```
-The server will start on `http://localhost:5000`
+The server will start on `http://localhost:5001`
 
-### 3. Test the API
+### 4. Test the API
 ```bash
 # Run unit tests
 python test_app.py
-
-# Run example usage
-python example_usage.py
 ```
 
 ## API Endpoints
@@ -59,21 +62,23 @@ Each category receives a score: **Excellent**, **Good**, **Fair**, or **Poor**.
 ## Documentation
 
 - **`API_README.md`** - Complete API documentation with examples
+- **`GEMINI_INTEGRATION_GUIDE.md`** - Complete Gemini setup and usage guide
 - **`test_app.py`** - Comprehensive test suite
-- **`example_usage.py`** - Working examples in Python
+- **`gemini_model_integration.py`** - Gemini AI integration module
 
-## Current Implementation
+## Google Gemini Integration
 
-- **Mock LLM**: Currently uses simple scoring logic for demonstration
-- **Ready for Integration**: Easy to replace with actual LLM API calls
+- **Gemini AI**: Uses Google's Gemini-1.5-flash model for intelligent evaluation
+- **Intelligent Fallback**: Automatically falls back to mock evaluation when Gemini is unavailable
 - **Production Ready**: Includes input validation, error handling, and logging
+- **Comprehensive Prompting**: Detailed prompts for consistent rubric scoring
 
-## Next Steps
+## Features
 
-1. **Replace Mock LLM**: Integrate with actual LLM providers (OpenAI, Anthropic, etc.)
-2. **Custom Rubrics**: Allow dynamic rubric configuration
-3. **Batch Processing**: Evaluate multiple submissions at once
-4. **Confidence Scores**: Add confidence levels to evaluations
+- **AI-Powered Evaluation**: Real AI evaluation using Google Gemini
+- **Robust Fallback**: Seamless fallback to mock evaluation
+- **Safety Settings**: Configured for educational content
+- **Error Handling**: Graceful error handling with detailed logging
 
 ## Usage Example
 
@@ -81,7 +86,7 @@ Each category receives a score: **Excellent**, **Good**, **Fair**, or **Poor**.
 import requests
 
 # Evaluate a student submission
-response = requests.post('http://localhost:5000/llm/rubric-score', 
+response = requests.post('http://localhost:5001/llm/rubric-score', 
     json={'student_submission': 'Your essay text here...'})
 
 result = response.json()

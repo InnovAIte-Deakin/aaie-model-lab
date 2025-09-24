@@ -1,5 +1,6 @@
 import unittest
 import json
+import os
 from app import app
 
 class TestRubricScoringAPI(unittest.TestCase):

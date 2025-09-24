@@ -4,6 +4,7 @@ import json
 import os
 from typing import Dict, Any
 import logging
+from gemini_model_integration import initialize_gemini_model, get_gemini_scorer, GeminiRubricScorer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -11,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
+
+# Global Gemini scorer instance
+GEMINI_SCORER = None
 
 # Rubric categories and their possible labels
 RUBRIC_CATEGORIES = {
@@ -48,10 +52,10 @@ RUBRIC_CRITERIA = {
     }
 }
 
-def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
+def llm_evaluation(student_submission: str) -> Dict[str, str]:
     """
-    Mock LLM evaluation function that returns rubric scores.
-    In a real implementation, this would call an actual LLM API.
+    LLM evaluation function that returns rubric scores using Gemini AI.
+    Falls back to mock evaluation if Gemini is not available.
     
     Args:
         student_submission (str): The student's submission text
@@ -59,13 +63,35 @@ def mock_llm_evaluation(student_submission: str) -> Dict[str, str]:
     Returns:
         Dict[str, str]: Dictionary with rubric category scores
     """
-    # This is a mock implementation (will replace with actual LLM API call)
-    # For now, it returns a simple evaluation based on text length and content
+    global GEMINI_SCORER
     
+    # Try to use Gemini if available
+    if GEMINI_SCORER:
+        try:
+            logger.info("Using Gemini AI for evaluation")
+            return GEMINI_SCORER.evaluate_submission(student_submission)
+        except Exception as e:
+            logger.error(f"Gemini evaluation failed: {str(e)}")
+            logger.info("Falling back to mock evaluation")
+    
+    # Fallback to mock evaluation
+    logger.info("Using mock evaluation (Gemini not available)")
+    return mock_evaluation(student_submission)
+
+def mock_evaluation(student_submission: str) -> Dict[str, str]:
+    """
+    Mock evaluation function for fallback when Gemini is not available.
+    
+    Args:
+        student_submission (str): The student's submission text
+        
+    Returns:
+        Dict[str, str]: Dictionary with rubric category scores
+    """
     text_length = len(student_submission)
     word_count = len(student_submission.split())
     
-    # Simple scoring logic (replace with actual LLM evaluation)
+    # Simple scoring logic based on text characteristics
     if word_count > 50 and "because" in student_submission.lower() and "economic" in student_submission.lower():
         structure = "Excellent"
         clarity = "Good"
@@ -160,8 +186,8 @@ def evaluate_submission():
         # Log the evaluation request
         logger.info(f"Evaluating submission of length: {len(student_submission)} characters")
         
-        # Call LLM evaluation (currently mocked)
-        rubric_scores = mock_llm_evaluation(student_submission)
+        # Call LLM evaluation (uses Gemini AI with fallback to mock)
+        rubric_scores = llm_evaluation(student_submission)
         
         # Log the evaluation results
         logger.info(f"Evaluation completed: {rubric_scores}")
@@ -195,5 +221,18 @@ def get_rubric_info():
     }), 200
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    # Initialize Gemini model
+    logger.info("Initializing Gemini AI model...")
+    gemini_initialized = initialize_gemini_model()
+    
+    if gemini_initialized:
+        logger.info("✅ Gemini AI model initialized successfully")
+        GEMINI_SCORER = get_gemini_scorer()
+    else:
+        logger.warning("⚠️  Gemini AI model initialization failed. Using mock evaluation.")
+        logger.info("To use Gemini AI, set the GOOGLE_AI_API_KEY environment variable")
+    
+    # Start the Flask application
+    port = int(os.environ.get('PORT', 5001))  # Changed to 5001 to avoid conflicts
+    logger.info(f"Starting LLM Rubric Scoring API on port {port}")
     app.run(host='0.0.0.0', port=port, debug=True)
