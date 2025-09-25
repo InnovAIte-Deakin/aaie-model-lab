@@ -1,13 +1,5 @@
-﻿**Artificial Assessment Intelligence – For Educators (AAIE) Report**
+﻿**Solution Architecture Team in Model Training Report**
 
------
-1. **Team Information**
-- **Team**: Solution Architecture Team in Model Training
-- **Lead**: VAN HIEU NGUYEN
-- **Member**: UMAR KHAYAM
-- **Product Owner**: ARNAVE AHUJA
-- **Scrum:** KHUSHI CHOUBEY
------
 1. **Create Solution Architecture (Week 1 and Week 3)**
 
 **Objective**: Create Solution Architecture, including data flow diagram for AI-generated content detection and feedback generation, draw the system architecture and add data flow annotations.
@@ -20,7 +12,7 @@
 **Solution Architecture:**
 
 1. **AI Detection:**
-- Input: Student text
+- Input: Student Submission
 - Modules: Pre-processing → Embedding → Classifier → Confidence/ Explanation
 - Output: AI/Human label + explanation
 1. **Feedback Generation:**
@@ -32,7 +24,6 @@
 
 1. Create data/model flow diagram for AI-generated content detection:
 
-   ![](Aspose.Words.774edbb2-3f18-4dc4-b2da-c145c0a1bb0b.001.png)
 
 - **Data Flow:**
 - Input: string/JSON → Output: JSON
@@ -54,14 +45,13 @@
 
 1. Design flow diagram for rubric-aligned feedback generation:
 
-   ![](Aspose.Words.774edbb2-3f18-4dc4-b2da-c145c0a1bb0b.002.png)
 
 - **Data Flow:**
 - Input: string/JSON → Output: JSON
 - Embeddings: vector shape (768,)
 - Output: Text, String, or JSON
 - **Example:** 
-- Input: Student Response
+- Input: Student submission and Rubric.
 - Expected Output:
 
   {  
@@ -70,15 +60,6 @@
 
 }
 
-1. Draw system-level architecture (block diagram): UMAR KHAYAM
-
-![](Aspose.Words.774edbb2-3f18-4dc4-b2da-c145c0a1bb0b.003.png)
-
-- In Database, it will contain:
-- Vector DB: Embeddings
-- SQL/NoSQL: Rubrics, 
-- Logs- S3/GCS: Model Checkpoints
-
 
 **Module Descriptions:**
 
@@ -86,8 +67,8 @@
 1. Tokenizer: tokenize for embedding/model input	. Using: BPE, SentencePiece.
 1. Embedding: encode text to vector. UsingBERT, SentenceTransformer.
 1. Classifier: classify AI vs Human. Using: MLP, logistic regression.
-1. Explanation: string explanation. Using: SHAP, LIME.
+1. Explanation: string explanation. Using: fine-tuning (Gemini 1.5 model)
 1. Feature Extractor: extract NLP features. Using: custom NLP.
 1. Rubric Matcher: align response to rubric. Using: Rule-based / LLM prompts.
-1. Feedback Generator: produce rubric-aligned feedback. Using: GPT prompt, LLM.
-1. API Gateway: route frontend/backend requests	. Using: FastAPI, Flask.
+1. Feedback Generator: produce rubric-aligned feedback. Using: GPT prompt (fine tuning), LLM.
+1. API Gateway: route frontend/backend requests	. Using: deploy using Google Cloud.
