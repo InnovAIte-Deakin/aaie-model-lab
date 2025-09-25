@@ -6,8 +6,8 @@
 
 `	`**Use case:**
 
-1. **AI Detection:** Automatically label student writing as AI or human-generated with confidence explanation (show as percentage)
-1. **Feedback Generation:** Automatically generate personalized feedback based on rubric and student response (as prompt)
+(1). **AI Detection:** Automatically label student writing as AI or human-generated with confidence explanation (show as percentage)
+(2.) **Feedback Generation:** Automatically generate personalized feedback based on rubric and student response (as prompt)
 
 **Solution Architecture:**
 
@@ -15,8 +15,8 @@
 - Input: Student Submission
 - Modules: Pre-processing → Embedding → Classifier → Confidence/ Explanation
 - Output: AI/Human label + explanation
-1. **Feedback Generation:**
-- Input: Student response + rubric
+12. **Feedback Generation:**
+- Input: Student Submission + rubric
 - Modules: Text Cleaning → Feature Extraction → Rubric Matcher / student response → LLM Generator
 - Output: Natural language feedback + rubric tags
 
