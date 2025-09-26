@@ -142,18 +142,17 @@ Overall, the GenAI feedback is consistently accurate, clear, constructive, and m
 - Chain of Thought prompting should be consistently applied, as it strengthens accuracy in edge cases and improves the depth and actionability of feedback. However, a dual-layer strategy (Flash with CoT + Pro or Flash with CoT + reviewer for Accounting/IT) will ensure balanced accuracy, richer reasoning, and actionable feedback quality across all domains.
 ---
 
-## Advantages
-- Fast and lightweight; suitable for high-volume workloads.  
-- Multimodal capabilities (text, image, audio, video, PDFs) with extended context handling.  
-- Cost-effective and scalable for production applications.  
-- High accuracy in domains with strong training representation (Engineering, Psychology, Teaching).  
-- Professional and supportive feedback tone across domains.  
-
+## Advantages of COT
+- Encourages the model to reason step by step, reducing shortcut errors and improving classification in tricky Human/Hybrid cases.
+- Produces deeper explanations, examples, and risk analysis, which directly addresses actionability gaps noted in domains like Accounting and IT.
+- Aligns well with rubric-style evaluations by enforcing a logical sequence, leading to clear, coherent feedback across domains.
+- When handling extended inputs (documents, tables, multimodal data), CoT helps the model break information down into smaller reasoning steps, increasing reliability.
+- Since Flash is optimized for speed rather than deep reasoning, CoT compensates by guiding it to apply reasoning strategies more explicitly achieving a middle ground between Flash and Pro.
 ---
 
-## Limitations
-- Slightly lower AI detection accuracy in Accounting and IT domains.  
-- Actionability of feedback is moderate in some areas, requiring deeper examples or risk analyses.  
-- Does not reach the reasoning depth of Gemini 1.5 Pro, so not ideal for highly complex tasks.  
-- Requires careful prompt design (e.g., Chain of Thought) to achieve optimal results.  
-
+## Limitations of COT
+- Step-by-step reasoning means longer outputs, increasing token usage, API costs, and latency a drawback for high-volume production systems.
+- For simple tasks like straightforward classification or summarization, CoT adds verbosity without extra value, making results harder to parse automatically.
+- The model may generate convincing but incorrect reasoning chains, which can reduce user trust if not validated.
+- The level of detail in CoT responses can vary across runs and domains, sometimes requiring extra post-processing to normalize outputs.
+- CoT tries to push Flash toward deeper reasoning, but Flash isn’t designed for complex, nuanced problem solving like Pro. In such cases, Pro may still be a better choice.
