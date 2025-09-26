@@ -10,10 +10,10 @@ Project name: AAIE – LLM Prototyping and Training
 
 1. **Overview**
 
-   The aim of this work was to evaluate the ability of Gemini 1.5 Flash, accessed via Google AI Studio, to perform two tasks:
+   The aim of this work was  test role-based prompting against gemini, and perform two tasks:
 
-1) AI Detection Task: Classify student submissions as Human, AI, or Hybrid and justify based on linguistic criteria.
-1) Feedback Generation Task: Generate structured academic feedback scored across six evaluation dimensions.
+(1) AI Detection Task: Classify student submissions as Human, AI, or Hybrid and justify based on linguistic criteria.
+(2) Feedback Generation Task: Generate structured academic feedback scored across six evaluation dimensions.
 
 The experiment was conducted with a set of test prompts and student-like submissions, focusing on academic integrity evaluation and supportive academic assessment.
 
@@ -60,7 +60,7 @@ The experiment was conducted with a set of test prompts and student-like submiss
 
   1. Gemini 1.5 flash model Set-up:
 
-genai.configure(api\_key="AIzaSyBwVZ9ABILNzNixnXFb0TgbrI90r7BEH1g")  
+genai.configure(api\_key="create_api_key")  
 
 MODEL = "gemini-1.5-flash"
 
@@ -111,9 +111,7 @@ MODEL = "gemini-1.5-flash"
          - **Confidence_level:** 95%
          **Reasoning for high confidence:** While the text is short and lacks the complexity typically associated with evaluating AI detection in longer texts, the claim's simplicity and lack of stylistic anomalies are consistent with a human-written self-declaration.
          AI models often struggle with such short, simple, and straightforward statements, particularly when they lack
-         any
-         sophisticated writing style which could be used to distinguish the writing as AI-generated.
-         ersity.
+         any sophisticated writing style which could be used to distinguish the writing as AI-generated.ersity.
 
       **AI Detection Output 2:**  
 
@@ -136,9 +134,7 @@ MODEL = "gemini-1.5-flash"
          **Reasoning for Confidence Level:** While the lexicall
          diversity and sentence structure diversity are relatively low,
          these are not uncommon in concise, factual statements, especially those
-         expressing a single, clear idea. The high content specificity, grammatical correctness, and overall coherence strongly suggest the text was generated with a clear purpose and struct
-         ure, consistent with a well-trained AI model focusing
-         on a specific aspect of AI in education. The lack of emotional expressiveness further points towards an AI origin.
+         expressing a single, clear idea. The high content specificity, grammatical correctness, and overall coherence strongly suggest the text was generated with a clear purpose and struct ure, consistent with a well-trained AI model focusing on a specific aspect of AI in education. The lack of emotional expressiveness further points towards an AI origin.
 
       **AI Detection Output 3:**  
       Evaluation Output:
@@ -160,9 +156,10 @@ MODEL = "gemini-1.5-flash"
          * **Coherence & Natural Transitions:** Excellent. The two sentences flow logically and naturally, with a clear temporal connection ("then").
          * **Pronouns:** Appropriate. The first-person pronoun "I" is used correctly.
          * **Contextual Appropriateness:** High. The statement is contextually appropriate within the context of acknowledging AI assistance in academic work. The admission of AI use is itself contextually appropriate.
+         
          - Confidence_level: 95%
-         Reasoning: The statement explicitly admits the use of ChatGPT. While the analysis portion is claimed as the student's own work, the reliance on AI for the outline is a significant indi cator.
-         The linguistic features themselves don't strongly suggest AI generation, but the confession is the primary basis for the high confidence level in the AI prediction. The lack of significant lexical or structural diversity is more a characteristic of the brevity of the statement than a strong indicator of AI authorship.
+         
+         Reasoning: The statement explicitly admits the use of ChatGPT. While the analysis portion is claimed as the student's own work, the reliance on AI for the outline is a significant indi cator. generation, but the confession is the primary basis for the high confidence level in the AI prediction. The lack of significant lexical or structural diversity is more a characteristic of the brevity of the statement than a strong indicator of AI authorship.
 
    1. *Feedback AI Generation Output:* 
 
