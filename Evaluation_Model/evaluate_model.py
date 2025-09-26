@@ -84,6 +84,60 @@ class EvaluateModel:
         self.results = all_scores
         return self.results
 
+    def generate_feedback_rubric(self) -> Dict[str, List[Dict]]:
+        """
+        Generate structured feedback based on evaluation criteria for each text:
+        Correctness, Clarity, Tone, Actionability, Coherence, Emotion
+        Each criterion scored 1-5 with brief explanation.
+        """
+        if "labels" not in self.dataset or "predictions" not in self.dataset or "prompts" not in self.dataset:
+            raise ValueError("Dataset must contain 'labels', 'predictions', and 'prompts' columns")
+        
+        feedback_list = []
+
+        # Simple heuristics for scoring
+        ai_keywords = ["machine learning", "AI", "artificial intelligence", "model", "data", "language model"]
+
+        for text, label, pred in zip(self.dataset["prompts"], self.dataset["labels"], self.dataset["predictions"]):
+            # Correctness
+            correctness = 5 if label == pred else 2
+            # Clarity
+            clarity = 5 if len(text.split()) < 10 else 4
+            # Tone
+            tone = 5 if pred == "Human" else 4
+            # Actionability
+            actionability = 5 if any(k in text.lower() for k in ai_keywords) else 4
+            # Coherence
+            coherence = 5 if (any(k.lower() in text.lower() for k in ai_keywords) and pred == "AI") or \
+                              (not any(k.lower() in text.lower() for k in ai_keywords) and pred == "Human") else 3
+            # Emotion
+            emotion = 5 if pred == "Human" else 4
+
+            explanation = (
+                f"Text: \"{text}\" | Predicted: '{pred}', Correct: '{label}'. "
+                f"Reasoning: {'Contains AI keywords' if any(k.lower() in text.lower() for k in ai_keywords) else 'Human-like writing style'}."
+            )
+
+            feedback_item = {
+                "text": text,
+                "predicted_label": pred,
+                "correct_label": label,
+                "scores": {
+                    "Correctness": correctness,
+                    "Clarity": clarity,
+                    "Tone": tone,
+                    "Actionability": actionability,
+                    "Coherence": coherence,
+                    "Emotion": emotion
+                },
+                "explanation": explanation
+            }
+
+            feedback_list.append(feedback_item)
+
+        self.results["feedback_rubric"] = feedback_list
+        return {"feedback_rubric": feedback_list}
+
 
 def classify_text(model, tokenizer, device: str, text: str, few_shot_prompt: str, max_new_tokens: int = 10) -> str:
     """Run classification inference on a text using a given model + tokenizer + prompt"""

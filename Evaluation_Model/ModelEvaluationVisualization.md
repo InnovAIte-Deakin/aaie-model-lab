@@ -8,7 +8,7 @@ Report: Interactive Model Evaluation Visualization
 
 1.	Overview
 
-This project implements an interactive visualization tool to evaluate both classification and generative AI models. The tool allows users to upload datasets, run model evaluations, and view results in a user-friendly interface built with Streamlit.
+This project implements an interactive visualization tool to evaluate both classification and Feedback Generation. The tool allows users to upload datasets, run model evaluations, and view results in a user-friendly interface built with Streamlit.
 
 2.	Methodology:
 
@@ -20,7 +20,7 @@ This project implements an interactive visualization tool to evaluate both class
 
 2.2.	Data Input Options
 
-•	Simple Text: Enter text data manually (one entry per line).
+•	Simple Text: Enter text data manually (a few-shot prompt)).
 •	JSON Dataset: Upload JSON files with structured data containing prompts, reference texts, predictions, or labels.
 
 {
@@ -68,4 +68,6 @@ o	Process and Evaluate: Combine processing and evaluation in a single step.
 •	Results displayed in tables and interactive dashboards.
 
 **Streamlit Output::**
-<img src="streamlit_output.png" alt="Model Visualization Using Streamlit" width="600"><br>
+<img src="modelprocess_evaluation_output.png" alt="Model Process and Evaluation Output" width="600"><br>
+
+<img src="feedback_generation_output.png" alt="Feedback Generation Output" width="600"><br>

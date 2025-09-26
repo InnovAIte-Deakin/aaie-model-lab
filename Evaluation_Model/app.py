@@ -1,4 +1,3 @@
-# streamlit_app.py
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -7,7 +6,7 @@ import json
 
 from evaluate_model import EvaluateModel, classify_text
 
-# --- Default Few-Shot Prompt (moved from evaluate_model.py) ---
+# --- Default Few-Shot Prompt ---
 default_prompt = """
 Decide whether the following text was written by a human or an AI.
 Text: "Artificial intelligence is a powerful tool for automating tasks."
@@ -56,13 +55,15 @@ with col_main:
         selected_metrics = st.multiselect("📏 Select metrics", ["bleu", "rouge", "bertscore"], default=["bleu", "rouge"])
 
     # --- Buttons ---
-    col_btn1, col_btn2, col_btn3 = st.columns(3)
+    col_btn1, col_btn2, col_btn3, col_btn4 = st.columns(4)
     with col_btn1:
         process_button = st.button("Process Model")
     with col_btn2:
         submit_button = st.button("Run Evaluation")
     with col_btn3:
         process_eval_button = st.button("Process & Evaluate")
+    with col_btn4:
+        feedback_button = st.button("Generate Feedback")
 
 with col_pad_right:
     dataset_preview = st.empty()
@@ -78,6 +79,9 @@ if "df" not in st.session_state:
 # --- Processing Logic ---
 def run_processing():
     if data_mode == "JSON":
+        if data is None:
+            st.warning("Please upload a JSON file.")
+            return
         dataset = json.load(data)
         st.session_state.df = pd.DataFrame(dataset)
         dataset_preview.write(st.session_state.df.head())
@@ -129,3 +133,13 @@ if submit_button:
 if process_eval_button:
     run_processing()
     run_evaluation()
+
+if feedback_button:
+    if st.session_state.df.empty:
+        st.error("No processed data found. Please process your data first.")
+    else:
+        evaluator = EvaluateModel(dataset=st.session_state.df.to_dict(orient="list"))
+        feedback_result = evaluator.generate_feedback_rubric()
+        st.write("### 📝 Feedback Evaluation (Rubric)")
+        for fb in feedback_result["feedback_rubric"]:
+            st.json(fb)
