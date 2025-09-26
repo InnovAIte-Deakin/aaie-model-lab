@@ -24,13 +24,6 @@ Purpose: To ensure AI feedback structurally and semantically resembles human-wri
 
 *c) Human Evaluation Metrics:* independent raters judge the feedback on a 5-point scale for usefulness, clarity, tone, specificity, and overall preference.
 
-- Usefulness: actionable for debugging. 
-- Clarity: easy to understand. 
-- Tone appropriateness: supportive and non-punitive. 
-- Specificity: concrete and precise advice. 
-- Overall preference: compute overall rating
- 
-
 2. **Define Success Criteria:** the hypothesis states that a good model must not only generate text similar to human responses but also add value. Success criteria are:
    
 *a) Automatic Text Similarity metrics* 
@@ -38,21 +31,19 @@ Purpose: To ensure AI feedback structurally and semantically resembles human-wri
 - ROUGE-L: greater or equal 0.35. It captures recall of important phrases; threshold set to reflect retention of key concepts in reference feedback. 
 - METTOR: greater or equal 0.30. Accounts for synonym and stem matches.
   
-*b) Rubric Metric:* 
-- Correctness greather than 85%. Fine-tuned models in the study reached between 86 and 88%, higher than baseline engineered prompts. 
-- Num of words: length around 40–70. Matches student mean (46 words) while allowing in range of 20% flexibility. 
-- Num of sentences: 2 or 3 sentences. Matches student average (2.7 sentences). 
-- Average score ≥ 4.0/5 across all six criteria.
-
-- Therefore, a model is successful if: 
+*b) Rubric Metric:* a model is successful if: 
   - Automatic metrics: Meets all three thresholds for BLEU, ROUGE-L, and METEOR, and shows significant improvement over baseline prompts. 
   - Rubric metrics: Meets 5 out of 6 rubric thresholds above, with Correctness mandatory. 
+    - Average ≥ 4.0/5 across all six criteria.
+    - Correctness ≥ 85% alignment with human annotations.
+    - Feedback length: 40–70 words (matches student style).
+    - Sentence count: 2–3 sentences.
 
 3. **Define the evaluation Dataset Structure:** we will work with data team to make sure we follow the correct format for evaluation. Assume that
     
 *a) Dataset format and content hypothesis:*
 
-- submission_text – De-identified student essay or response.
+- submission_text – student essay or response.
 - generated\_feedback: text (Feedback produced by the evaluated model). 
 - ground\_truth\_feedback: text (Reference feedback, such as student-written). 
 - source\_type: categorical, such as "student", "AI", or "Hybrid".
